@@ -1,0 +1,239 @@
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100vw;
+  padding: 0px 20px 0px;
+	background-color: blanchedalmond;
+}
+
+.header {
+  width: 100%;
+}
+
+.header__info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__list {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid green;
+}
+
+.hidden-bird {
+	width: 100%;
+  display: flex;
+  border: 1px solid green;
+}
+
+
+.hidden-bird__info {
+	width: 500px;
+	margin: 0 auto;
+}
+
+
+
+
+.quiz {
+  width: 100%;
+}
+
+.quiz__wrap {
+  width: 100%;
+  display: flex;
+}
+
+.quiz__list {
+  width: 50%;
+	height: 300px;
+	margin: 0px;
+	padding: 0px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid green;
+}
+
+.quiz__info {
+  width: 50%;
+	height: 300px;
+  display: flex;
+  border: 1px solid green;
+}
+
+.quiz__item {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 50px;
+  width: 100%;
+  border: 1px solid blueviolet;
+  cursor: pointer;
+}
+
+.bird {
+	display: flex;
+	flex-direction: column;
+}
+.bird__wrap {
+  display: flex;
+}
+
+.bird__info{
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+}
+.bird__name {
+	border: 1px solid green;
+}
+.bird__species {
+	border: 1px solid green;
+}
+.bird__description {
+	border: 1px solid green;
+}
+.bird__image {
+  width: 170px;
+  height: 170px;
+	margin: 0 auto;
+	border: 5px solid green;
+}
+
+.player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.player-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 120px;
+}
+
+
+
+
+.player-icon,
+.slider-icon,
+.change-quote,
+.settings,
+.todo  {
+  width: 32px;
+  height: 32px;
+  background-size: 32px 32px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+  opacity: 0.8;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.player-icon:hover,
+.slider-icon:hover,
+.change-quote:hover,
+.settings:hover,
+.todo:hover {
+  opacity: 1;
+}
+
+.player-icon:active,
+.slider-icon:active,
+.change-quote:active,
+.settings:active,
+.todo:active {
+  border: 0;
+  outline: 0;
+  transform: scale(1.1);
+}
+
+.play {
+  width: 40px;
+  height: 40px;
+  background-size: 40px 40px;
+  background-image: url('images/play.svg');
+}
+
+
+.volume {
+  background-image: url('images/volume.svg');
+  background-size: cover;
+  width: 18px;
+  height: 18px;
+}
+
+.volumeOff {
+  background-image: url('images/volumeoff.svg');
+}
+
+.pause {
+  background-image: url('images/pause.svg');
+}
+
+
+
+.trackTime {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1px;
+}
+
+
+#progress-bar {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 3px;
+  background: white;
+  width: 100%;
+  border-radius: 30px;
+}
+#volume-bar {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 3px;
+  background: white;
+  width: 60%;
+  border-radius: 30px;
+}
+
+#volume-bar::-webkit-slider-thumb,
+#progress-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  margin-top: -3px;
+  height: 10px;
+  width: 5px;
+  border: 0;
+  background: skyblue;
+  border-radius: 30px;
+  cursor: pointer;
+}
+#volume-bar::-webkit-slider-runnable-track,
+#progress-bar::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  max-height: 5px;
+  border-radius: 30px;
+}
+
+#progress-bar:focus {
+  outline: none;
+}
+
+.quiz__submit{
+	width: 100%;
+	height: 30px;
+}

@@ -8,69 +8,63 @@
 </head>
 <body>
 	<div class="container">
-		<div class="header">
-			<div class="header__info">
-				<h1 class="header__title">Songbird</h1>
-				<p class="header__score">Score:</p>
-			</div>
-			<ul class="header__list">
-				<li class="header__item">Разминка</li>
-				<li class="header__item">Воробьиные</li>
-				<li class="header__item">Лесные птицы</li>
-				<li class="header__item">Певчие птицы</li>
-				<li class="header__item">Хищные птицы</li>
-				<li class="header__item">Морские птицы</li>
+		<div class="game">
+			<ul class="game__list questions-list">
+				<li class="questions__item">Разминка</li>
+				<li class="questions__item">Воробьиные</li>
+				<li class="questions__item">Лесные птицы</li>
+				<li class="questions__item">Певчие птицы</li>
+				<li class="questions__item">Хищные птицы</li>
+				<li class="questions__item">Морские птицы</li>
 			</ul>
-		</div>
-		<div class="hidden-bird">
-			<img src="./images/hidden_bird.jpg" alt="" class="hidden-bird__image">
-			<div class="hidden-bird__info">
-				<p class="hidden-bird__name">******</p>
-				<div class="hidden-bird__audio">
-					<div class="hidden-bird__player player">
-						<input
-							type="range"
-							id="progress-bar"
-							min="0"
-							max=""
-							value="0"
-						/>
-						<div class="trackTime">
-							<div class="currentTime"></div>
-							<span class="trackTimeSlider">/</span>
-							<div class="durationTime"></div>
-							<button class="volume player-icon"></button>
+			<p class="game__score">Score: 0</p>
+			<div class="game__question question">
+				<img src="./images/hidden_bird.jpg" alt="" class="question__image">
+				<div class="question__info">
+					<p class="qusetion__answer">******</p>
+					<div class="question__audio">
+						<div class="question__player player">
 							<input
-							type="range"
-							id="volume-bar"
-							min="0"
-							max="100"
-							value="0"
-						/>
-						</div>
-						<audio></audio>
-						<div class="player-controls">
+								type="range"
+								id="progress-bar"
+								min="0"
+								max=""
+								value="0"
+							/>
+							<div class="trackTime">
+								<div class="currentTime"></div>
+								<span class="trackTimeSlider">/</span>
+								<div class="durationTime"></div>
+								<button class="volume player-icon"></button>
+								<input
+								type="range"
+								id="volume-bar"
+								min="0"
+								max="100"
+								value="0"
+							/>
+							</div>
+							<audio></audio>
 							<button class="play player-icon"></button>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="quiz">
-			<div class="quiz__wrap">
-				<ul class="quiz__list"></ul>
-				<div class="quiz__info bird">
-					<div class="bird__wrap">
-						<div class="bird__info">
-							<p class="bird__name"></p>
-							<p class="bird__species"></p>
-							<div class="bird__audio"></div>
+			<div class="game__quiz quiz">
+				<div class="quiz__wrap">
+					<div class="quiz__answers"></div>
+					<div class="quiz__info bird">
+						<div class="bird__wrap">
+							<img src="./images/hidden_bird.jpg" alt="" class="bird__image">
+							<div class="bird__info">
+								<p class="bird__name"></p>
+								<p class="bird__species"></p>
+							</div>
 						</div>
+						<p class="bird__description">Пожалуйста, прослушайте аудиозапись и выберите вариант ответа</p>
 					</div>
-					<p class="bird__description"></p>
-				</div>
+				<button class="quiz__submit">следующий уровень</button>
 			</div>
-			<button class="quiz__submit">следующий уровень</button>
 		</div>
 	</div>
 </body>

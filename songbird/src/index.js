@@ -3,43 +3,42 @@ import './index.scss';
 import birdsData from './modules/birds';
 
 function getBirds(family) {
-  const birds = document.querySelector('.quiz__list');
+  const birds = document.querySelector('.quiz__answers');
   for (let bird of birdsData[family]) {
-    const ul = document.createElement('ul');
-    ul.className = 'quiz__item';
-    ul.id = bird.id;
-    ul.innerHTML = bird.name;
-    birds.append(ul);
+    const li = document.createElement('li');
+    li.className = 'quiz__answer';
+    li.id = bird.id;
+    li.innerHTML = bird.name;
+    birds.append(li);
   }
 }
 
 function getBirdInfo(family, id) {
-  const img = document.createElement('img');
   const birdWrap = document.querySelector('.bird__wrap');
   const birdName = document.querySelector('.bird__name');
   const birdSecondName = document.querySelector('.bird__species');
   const birdDesc = document.querySelector('.bird__description');
-  img.src = birdsData[family][id].image;
-  img.className = 'bird__image';
-  birdWrap.lastChild.remove();
-  birdWrap.append(img);
+  const birdImage = document.querySelector('.bird__image');
+
+
+
+
   birdDesc.innerHTML = birdsData[family][id].description;
   birdName.innerHTML = birdsData[family][id].name;
   birdSecondName.innerHTML = birdsData[family][id].species;
+  birdImage.src = birdsData[family][id].image
 }
 
 function getWinBird(family, id) {
-  console.log(Number(id), randomBird)
-  const hiddenBirdImage = document.querySelector('.hidden-bird__image');
-  const hiddenBirdName = document.querySelector('.hidden-bird__name');
+  const questionImage = document.querySelector('.question__image');
+  const qusetionAnswer = document.querySelector('.qusetion__answer');
   if (Number(id) === randomBird) {
-    hiddenBirdImage.src = birdsData[family][id].image;
-    hiddenBirdName.innerHTML = birdsData[family][id].name;
+    questionImage.src = birdsData[family][id].image;
+    qusetionAnswer.innerHTML = birdsData[family][id].name;
   }
 }
 
 let family = 0;
-let birds = [];
 getBirds(family);
 
 function getRandom(min, max) {
@@ -49,8 +48,9 @@ function getRandom(min, max) {
 }
 
 let randomBird = getRandom(0, 5);
-console.log(randomBird)
-document.querySelector('.quiz__list').addEventListener('click', (event) => {
+console.log(randomBird);
+
+document.querySelector('.quiz__answers').addEventListener('click', (event) => {
   getBirdInfo(family, event.target.id);
   getWinBird(family, event.target.id);
 });

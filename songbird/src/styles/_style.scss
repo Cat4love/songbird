@@ -8,49 +8,73 @@
 	background-color: blanchedalmond;
 }
 
-.header {
-  width: 100%;
-}
 
-.header__info {
+.questions-list{
+  width: 340px;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   align-items: center;
-  justify-content: space-between;
+  border: 1px solid green;
+  padding: 0px;
+  margin: 0 auto;
 }
 
-.header__list {
+.game__score {
+ width: 340px;
+ margin: 0 auto;
+ border: 1px solid red;
+}
+
+.questions__item{
+  border: 1px solid blueviolet;
+  list-style-type: none;
+}
+.game__score {
+  border: 1px solid red;
+}
+
+.question {
+	width: 340px;
   display: flex;
-  justify-content: space-between;
+  border: 1px solid green;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+.question__image{
+  width: 170px;
+  height: 170px;
+  margin: 0 auto;
   border: 1px solid green;
 }
-
-.hidden-bird {
-	width: 100%;
-  display: flex;
-  border: 1px solid green;
-}
-
-
-.hidden-bird__info {
-	width: 500px;
+.question__info {
+	width: 340px;
 	margin: 0 auto;
 }
-
+.qusetion__answer{
+  border: 1px solid green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 
 
 .quiz {
   width: 100%;
+  margin: 0 auto;
 }
 
 .quiz__wrap {
-  width: 100%;
+  width: 340px;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
 }
 
-.quiz__list {
-  width: 50%;
-	height: 300px;
+.quiz__answers {
 	margin: 0px;
 	padding: 0px;
   display: flex;
@@ -58,18 +82,10 @@
   border: 1px solid green;
 }
 
-.quiz__info {
-  width: 50%;
-	height: 300px;
-  display: flex;
-  border: 1px solid green;
-}
-
-.quiz__item {
+.quiz__answer {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 50px;
   width: 100%;
   border: 1px solid blueviolet;
   cursor: pointer;
@@ -83,10 +99,19 @@
   display: flex;
 }
 
+.bird__image {
+  width: 170px;
+  height: 170px;
+	margin: 0 auto;
+	border: 5px solid green;
+}
+
 .bird__info{
 	width: 50%;
 	display: flex;
 	flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .bird__name {
 	border: 1px solid green;
@@ -96,19 +121,20 @@
 }
 .bird__description {
 	border: 1px solid green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.bird__image {
-  width: 170px;
-  height: 170px;
-	margin: 0 auto;
-	border: 5px solid green;
-}
+
+
 
 .player {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 5px;
+  width: 340px;
+  margin: 20px 0px 20px;
 }
 
 .player-controls {
@@ -121,11 +147,7 @@
 
 
 
-.player-icon,
-.slider-icon,
-.change-quote,
-.settings,
-.todo  {
+.player-icon {
   width: 32px;
   height: 32px;
   background-size: 32px 32px;
@@ -139,19 +161,11 @@
   transition: 0.3s;
 }
 
-.player-icon:hover,
-.slider-icon:hover,
-.change-quote:hover,
-.settings:hover,
-.todo:hover {
+.player-icon:hover {
   opacity: 1;
 }
 
-.player-icon:active,
-.slider-icon:active,
-.change-quote:active,
-.settings:active,
-.todo:active {
+.player-icon:active {
   border: 0;
   outline: 0;
   transform: scale(1.1);

@@ -54,7 +54,7 @@ function getBirds(family) {
   }
   
   quizSubmit.classList.remove('active');
-  questionImage.src = './assets/cbd08c29fc4a2f0108e8.jpg';
+  questionImage.src = './assets/images/hidden_bird.jpg';
   qusetionAnswer.innerHTML = '******';
   saveTrackTime = 0;
   audio.src = birdsData[family][randomBird].audio;

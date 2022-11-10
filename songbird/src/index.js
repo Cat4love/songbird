@@ -2,44 +2,31 @@ import './index.html';
 import './index.scss';
 import birdsData from './modules/birds';
 
-function getBirds(family) {
-  const birds = document.querySelector('.quiz__answers');
-  for (let bird of birdsData[family]) {
-    const li = document.createElement('li');
-    li.className = 'quiz__answer';
-    li.id = bird.id;
-    li.innerHTML = bird.name;
-    birds.append(li);
-  }
-}
+const questions = document.querySelectorAll('.questions__item');
+const quizSubmit = document.querySelector('.quiz__submit');
+const birdWrap = document.querySelector('.bird__wrap');
+const birdName = document.querySelector('.bird__name');
+const birdSecondName = document.querySelector('.bird__species');
+const birdDesc = document.querySelector('.bird__description');
+const birdImage = document.querySelector('.bird__image');
+const questionImage = document.querySelector('.question__image');
+const qusetionAnswer = document.querySelector('.qusetion__answer');
+const play = document.querySelector('.play');
+const audio = document.querySelector('audio');
+const progressBar = document.querySelector('#progress-bar');
+const volume = document.querySelector('.volume');
+const volumeBar = document.querySelector('#volume-bar');
+const gameScore = document.querySelector('.game__score');
+const birds = document.querySelector('.quiz__answers');
 
-function getBirdInfo(family, id) {
-  const birdWrap = document.querySelector('.bird__wrap');
-  const birdName = document.querySelector('.bird__name');
-  const birdSecondName = document.querySelector('.bird__species');
-  const birdDesc = document.querySelector('.bird__description');
-  const birdImage = document.querySelector('.bird__image');
-
-
-
-
-  birdDesc.innerHTML = birdsData[family][id].description;
-  birdName.innerHTML = birdsData[family][id].name;
-  birdSecondName.innerHTML = birdsData[family][id].species;
-  birdImage.src = birdsData[family][id].image
-}
-
-function getWinBird(family, id) {
-  const questionImage = document.querySelector('.question__image');
-  const qusetionAnswer = document.querySelector('.qusetion__answer');
-  if (Number(id) === randomBird) {
-    questionImage.src = birdsData[family][id].image;
-    qusetionAnswer.innerHTML = birdsData[family][id].name;
-  }
-}
-
+let randomBird = getRandom(0, 5);
+let score = 0;
+let gamePoints = 5;
 let family = 0;
-getBirds(family);
+volumeBar.value = 100;
+let isPlay = false;
+let saveTrackTime = 0;
+
 
 function getRandom(min, max) {
   min = Math.ceil(min);
@@ -47,23 +34,79 @@ function getRandom(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-let randomBird = getRandom(0, 5);
-console.log(randomBird);
 
-document.querySelector('.quiz__answers').addEventListener('click', (event) => {
-  getBirdInfo(family, event.target.id);
-  getWinBird(family, event.target.id);
+function getBirds(family) {
+  birds.innerHTML = '';
+  for (let i = 0; i < birdsData[family].length; i++) {
+    const li = document.createElement('li');
+    li.className = 'quiz__answer';
+    li.id = birdsData[family][i].id;
+    li.innerHTML = birdsData[family][i].name;
+    birds.append(li);
+  }
+
+  for (let i = 0; i < questions.length; i++) {
+    questions[i].classList.remove('active');
+    questions[i].classList.add('inactive');
+    if (i === family) {
+      questions[i].classList.add('active');
+    }
+  }
+  
+  quizSubmit.classList.remove('active');
+  questionImage.src = './assets/cbd08c29fc4a2f0108e8.jpg';
+  qusetionAnswer.innerHTML = '******';
+  saveTrackTime = 0;
+  audio.src = birdsData[family][randomBird].audio;
+  audio.pause();
+  play.classList.remove('pause');
+  isPlay = false;
+  gamePoints = 5;
+  randomBird = getRandom(0, 5);
+}
+
+function getBirdInfo(family, id) {
+  birdDesc.innerHTML = birdsData[family][id].description;
+  birdName.innerHTML = birdsData[family][id].name;
+  birdSecondName.innerHTML = birdsData[family][id].species;
+  birdImage.src = birdsData[family][id].image;
+}
+
+
+getBirds(family);
+
+quizSubmit.addEventListener('click', () => {
+  if (quizSubmit.classList.contains('active') && family < 5) {
+    family += 1;
+    getBirds(family);
+  } else if (quizSubmit.classList.contains('active') && family === 5) {
+    console.log('you win');
+  } else {
+    return;
+  }
 });
 
-const play = document.querySelector('.play');
-const audio = document.querySelector('audio');
-const progressBar = document.querySelector('#progress-bar');
-const volume = document.querySelector('.volume');
-const volumeBar = document.querySelector('#volume-bar');
-volumeBar.value = 100;
+document.querySelector('.quiz__answers').addEventListener('click', (event) => {
+  let id = Number(event.target.id);
+  if (Number(id) === randomBird) {
+    questionImage.src = birdsData[family][id].image;
+    qusetionAnswer.innerHTML = birdsData[family][id].name;
+    event.target.classList.add('active');
+    if (!quizSubmit.classList.contains('active')) {
+      score += gamePoints;
+    }
+    quizSubmit.classList.add('active');
+  } else {
+    event.target.classList.add('inactive');
+    if (!quizSubmit.classList.contains('active')) {
+      gamePoints -= 1;
+    }
+  }
+  gameScore.innerText = `Score:${score}`;
+  getBirdInfo(family, id);
+});
 
-let isPlay = false;
-let saveTrackTime = 0;
+
 
 function getTrackTime() {
   saveTrackTime = audio.currentTime;

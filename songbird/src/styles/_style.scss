@@ -248,6 +248,14 @@
 }
 
 .quiz__submit{
-	width: 100%;
+	width: 340px;
 	height: 30px;
+}
+
+.inactive{
+  background-color: pink;
+}
+
+.active{
+  background-color: skyblue;
 }

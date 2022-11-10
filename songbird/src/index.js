@@ -27,13 +27,11 @@ volumeBar.value = 100;
 let isPlay = false;
 let saveTrackTime = 0;
 
-
 function getRandom(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-
 
 function getBirds(family) {
   birds.innerHTML = '';
@@ -52,7 +50,7 @@ function getBirds(family) {
       questions[i].classList.add('active');
     }
   }
-  
+
   quizSubmit.classList.remove('active');
   questionImage.src = './assets/images/hidden_bird.jpg';
   qusetionAnswer.innerHTML = '******';
@@ -72,7 +70,6 @@ function getBirdInfo(family, id) {
   birdImage.src = birdsData[family][id].image;
 }
 
-
 getBirds(family);
 
 quizSubmit.addEventListener('click', () => {
@@ -87,26 +84,26 @@ quizSubmit.addEventListener('click', () => {
 });
 
 document.querySelector('.quiz__answers').addEventListener('click', (event) => {
-  let id = Number(event.target.id);
-  if (Number(id) === randomBird) {
-    questionImage.src = birdsData[family][id].image;
-    qusetionAnswer.innerHTML = birdsData[family][id].name;
-    event.target.classList.add('active');
-    if (!quizSubmit.classList.contains('active')) {
-      score += gamePoints;
+  if (event.target.classList.contains('quiz__answer')) {
+    let id = Number(event.target.id);
+    if (Number(id) === randomBird) {
+      questionImage.src = birdsData[family][id].image;
+      qusetionAnswer.innerHTML = birdsData[family][id].name;
+      event.target.classList.add('active');
+      if (!quizSubmit.classList.contains('active')) {
+        score += gamePoints;
+        gameScore.innerText = `Score:${score}`;
+      }
+      quizSubmit.classList.add('active');
+    } else {
+      event.target.classList.add('inactive');
+      if (!quizSubmit.classList.contains('active')) {
+        gamePoints -= 1;
+      }
     }
-    quizSubmit.classList.add('active');
-  } else {
-    event.target.classList.add('inactive');
-    if (!quizSubmit.classList.contains('active')) {
-      gamePoints -= 1;
-    }
+    getBirdInfo(family, id);
   }
-  gameScore.innerText = `Score:${score}`;
-  getBirdInfo(family, id);
 });
-
-
 
 function getTrackTime() {
   saveTrackTime = audio.currentTime;

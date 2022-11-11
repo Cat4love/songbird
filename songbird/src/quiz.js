@@ -12,20 +12,34 @@ const birdImage = document.querySelector('.bird__image');
 const questionImage = document.querySelector('.question__image');
 const qusetionAnswer = document.querySelector('.qusetion__answer');
 const play = document.querySelector('.play');
+const playTwo = document.querySelector('.playTwo');
 const audio = document.querySelector('audio');
+const audioTwo = document.querySelector('.audio');
 const progressBar = document.querySelector('#progress-bar');
+const progressBarTwo = document.querySelector('#progress-barTwo');
 const volume = document.querySelector('.volume');
+const volumeTwo = document.querySelector('.volumeTwo');
 const volumeBar = document.querySelector('#volume-bar');
+const volumeBarTwo = document.querySelector('#volume-barTwo');
 const gameScore = document.querySelector('.game__score');
 const birds = document.querySelector('.quiz__answers');
+const birdInfo = document.querySelector('.bird__info');
+const birdPlayer = document.querySelector('.bird__player');
+
 
 let randomBird = getRandom(0, 5);
 let score = 0;
 let gamePoints = 5;
 let family = 0;
 volumeBar.value = 100;
+volumeBarTwo.value = 100;
 let isPlay = false;
+let isPlayTwo = false;
+
 let saveTrackTime = 0;
+let saveTrackTimeTwo = 0;
+
+let chooseBird = '';
 
 function getRandom(min, max) {
   min = Math.ceil(min);
@@ -55,7 +69,6 @@ function getBirds(family) {
   questionImage.src = './assets/images/hidden_bird.jpg';
   qusetionAnswer.innerHTML = '******';
   saveTrackTime = 0;
-  audio.src = birdsData[family][randomBird].audio;
   audio.pause();
   play.classList.remove('pause');
   isPlay = false;
@@ -68,6 +81,14 @@ function getBirdInfo(family, id) {
   birdName.innerHTML = birdsData[family][id].name;
   birdSecondName.innerHTML = birdsData[family][id].species;
   birdImage.src = birdsData[family][id].image;
+  chooseBird = birdsData[family][id].audio;
+  audioTwo.src = chooseBird;
+  birdImage.classList.remove('hide');
+  birdImage.classList.add('view');
+  birdInfo.classList.remove('hide');
+  birdInfo.classList.add('view');
+  birdPlayer.classList.remove('hide');
+  birdPlayer.classList.add('view');
 }
 
 getBirds(family);
@@ -76,9 +97,17 @@ quizSubmit.addEventListener('click', () => {
   if (quizSubmit.classList.contains('active') && family < 5) {
     family += 1;
     getBirds(family);
+    birdImage.classList.remove('view');
+    birdImage.classList.add('hide');
+    birdInfo.classList.remove('view');
+    birdInfo.classList.add('hide');
+    birdPlayer.classList.remove('view');
+    birdPlayer.classList.add('hide');
+    birdDesc.innerHTML =
+    'Пожалуйста, прослушайте плеер и выберите вариант из списка';
   } else if (quizSubmit.classList.contains('active') && family === 5) {
-    localStorage.setItem('score', `${score}`)
-    document.location.href = './greet.html'
+    localStorage.setItem('score', `${score}`);
+    // document.location.href = './greet.html'
   } else {
     return;
   }
@@ -108,6 +137,7 @@ document.querySelector('.quiz__answers').addEventListener('click', (event) => {
 
 function getTrackTime() {
   saveTrackTime = audio.currentTime;
+  saveTrackTimeTwo = audioTwo.currentTime;
 }
 
 function playAudio() {
@@ -124,17 +154,43 @@ function playAudio() {
   }
 }
 
+function playAudioTwo() {
+  if (!isPlayTwo && chooseBird !== '') {
+    // audioTwo.src = chooseBird;
+    audioTwo.currentTime = saveTrackTimeTwo;
+    audioTwo.play();
+    playTwo.classList.add('pause');
+    isPlayTwo = true;
+  } else {
+    audioTwo.pause();
+    playTwo.classList.remove('pause');
+    isPlayTwo = false;
+  }
+}
+
 function updateProgressValue() {
   progressBar.max = audio.duration;
   progressBar.value = audio.currentTime;
+  progressBarTwo.max = audioTwo.duration;
+  progressBarTwo.value = audioTwo.currentTime;
   document.querySelector('.currentTime').innerHTML = formatTime(
     Math.floor(audio.currentTime)
+  );
+  document.querySelector('.currentTimeTwo').innerHTML = formatTime(
+    Math.floor(audioTwo.currentTime)
   );
   if (formatTime(Math.floor(audio.duration)) === 'NaN:NaN') {
     document.querySelector('.durationTime').innerHTML = '0:00';
   } else {
     document.querySelector('.durationTime').innerHTML = formatTime(
       Math.floor(audio.duration)
+    );
+  }
+  if (formatTime(Math.floor(audioTwo.duration)) === 'NaN:NaN') {
+    document.querySelector('.durationTimeTwo').innerHTML = '0:00';
+  } else {
+    document.querySelector('.durationTimeTwo').innerHTML = formatTime(
+      Math.floor(audioTwo.duration)
     );
   }
 }
@@ -152,9 +208,13 @@ setInterval(updateProgressValue, 1000);
 
 function changeProgressBar() {
   audio.currentTime = progressBar.value;
+  audioTwo.currentTime = progressBarTwo.value;
 }
 
 progressBar.addEventListener('input', () => {
+  changeProgressBar();
+});
+progressBarTwo.addEventListener('input', () => {
   changeProgressBar();
 });
 
@@ -169,6 +229,17 @@ function mute() {
     changeVolume();
   }
 }
+function muteTwo() {
+  volumeTwo.classList.toggle('volumeOff');
+  audioTwo.muted = !audioTwo.muted;
+  if (audioTwo.muted) {
+    volumeBarTwo.value = 0;
+    changeVolumeTwo();
+  } else {
+    volumeBarTwo.value = 100;
+    changeVolumeTwo();
+  }
+}
 
 function changeVolume() {
   audio.volume = volumeBar.value / 100;
@@ -180,15 +251,37 @@ function changeVolume() {
   }
 }
 
+function changeVolumeTwo() {
+  audioTwo.volume = volumeBarTwo.value / 100;
+  if (audioTwo.volume === 0) {
+    volumeTwo.classList.add('volumeOff');
+  }
+  if (audioTwo.volume > 0) {
+    volumeTwo.classList.remove('volumeOff');
+  }
+}
+
 play.addEventListener('click', playAudio);
+playTwo.addEventListener('click', playAudioTwo);
+
 play.addEventListener('click', getTrackTime);
+playTwo.addEventListener('click', getTrackTime);
+
 audio.addEventListener('ended', () => {
   saveTrackTime = 0;
   playAudio();
+});
+
+audioTwo.addEventListener('ended', () => {
+  saveTrackTimeTwo = 0;
+  playAudioTwo();
 });
 
 volume.addEventListener('click', mute);
 volumeBar.addEventListener('input', () => {
   changeVolume();
 });
-
+volumeTwo.addEventListener('click', muteTwo);
+volumeBarTwo.addEventListener('input', () => {
+  changeVolumeTwo();
+});

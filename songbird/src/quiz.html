@@ -55,13 +55,37 @@
 					<div class="quiz__answers"></div>
 					<div class="quiz__info bird">
 						<div class="bird__wrap">
-							<img src="./assets/images/hidden_bird.jpg" alt="" class="bird__image">
-							<div class="bird__info">
+							<img src="./assets/images/hidden_bird.jpg" alt="" class="bird__image hide">
+							<div class="bird__info hide">
 								<p class="bird__name"></p>
 								<p class="bird__species"></p>
 							</div>
 						</div>
-						<p class="bird__description">Пожалуйста, прослушайте аудиозапись и выберите вариант ответа</p>
+						<div class="bird__player player hide">
+							<input
+								type="range"
+								id="progress-barTwo"
+								min="0"
+								max=""
+								value="0"
+							/>
+							<div class="trackTime">
+								<div class="currentTimeTwo"></div>
+								<span class="trackTimeSlider">/</span>
+								<div class="durationTimeTwo"></div>
+								<button class="volumeTwo volume player-icon"></button>
+								<input
+								type="range"
+								id="volume-barTwo"
+								min="0"
+								max="100"
+								value="0"
+							/>
+							</div>
+							<audio class="audio"></audio>
+							<button class="playTwo play player-icon"></button>
+						</div>
+						<p class="bird__description">Пожалуйста, прослушайте плеер и выберите вариант из списка</p>
 					</div>
 				<button class="quiz__submit inactive">следующий уровень</button>
 			</div>

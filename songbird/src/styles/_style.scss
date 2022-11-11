@@ -137,12 +137,7 @@
   margin: 20px 0px 20px;
 }
 
-.player-controls {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 120px;
-}
+
 
 
 
@@ -176,6 +171,7 @@
   height: 40px;
   background-size: 40px 40px;
   background-image: url('./assets/images/play.svg');
+  margin: 0 auto;
 }
 
 
@@ -206,7 +202,8 @@
 }
 
 
-#progress-bar {
+#progress-bar,
+#progress-barTwo {
   -webkit-appearance: none;
   appearance: none;
   height: 3px;
@@ -214,7 +211,8 @@
   width: 100%;
   border-radius: 30px;
 }
-#volume-bar {
+#volume-bar,
+#volume-barTwo {
   -webkit-appearance: none;
   appearance: none;
   height: 3px;
@@ -224,7 +222,9 @@
 }
 
 #volume-bar::-webkit-slider-thumb,
-#progress-bar::-webkit-slider-thumb {
+#progress-bar::-webkit-slider-thumb, 
+#volume-barTwo::-webkit-slider-thumb,
+#progress-barTwo::-webkit-slider-thumb {
   -webkit-appearance: none;
   margin-top: -3px;
   height: 10px;
@@ -235,7 +235,9 @@
   cursor: pointer;
 }
 #volume-bar::-webkit-slider-runnable-track,
-#progress-bar::-webkit-slider-runnable-track {
+#progress-bar::-webkit-slider-runnable-track,
+#volume-barTwo::-webkit-slider-runnable-track,
+#progress-barTwo::-webkit-slider-runnable-track{
   -webkit-appearance: none;
   appearance: none;
   cursor: pointer;
@@ -243,7 +245,8 @@
   border-radius: 30px;
 }
 
-#progress-bar:focus {
+#progress-bar:focus, 
+#progress-barTwo:focus {
   outline: none;
 }
 
@@ -258,5 +261,17 @@
 
 .active{
   background-color: skyblue;
+}
+
+.view {
+  display: flex;
+  opacity: 1;
+  transition: all 1s ease-in-out;
+}
+
+.hide {
+  display: none !important;
+  opacity: 0;
+  transition: all 1s ease-in-out;
 }
 

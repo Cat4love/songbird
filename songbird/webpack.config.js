@@ -7,28 +7,47 @@ const devMode = mode === 'development';
 const devtool = devMode ? 'source-map' : undefined;
 console.log(mode + ' mode');
 
+pages = ['quiz', 'greet', 'score'];
+
 module.exports = {
   mode,
   devtool,
   devServer: {
     port: 3000,
-    open: true,
+    open: ['quiz.html'],
     // hot: true,
     allowedHosts: ['all'],
   },
-  entry: [path.resolve(__dirname, 'src', 'index.js')],
+  entry: pages.reduce((config, page) => {
+    config[page] = `./src/${page}.js`;
+    return config;
+  }, {}),
   output: {
     path: path.resolve(__dirname, 'dist'),
     clean: true,
     filename: '[name].[contenthash].js',
+
     assetModuleFilename: 'assets/[hash][ext]',
   },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
+  },
   plugins: [
+    ...[].concat(
+      pages.map(
+        (page) =>
+          new HtmlWebpackPlugin({
+            inject: true,
+            template: `./src/${page}.html`,
+            filename: `${page}.html`,
+            chunks: [page],
+          })
+      )
+    ),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',
-    }),
-    new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'src', 'index.html'),
     }),
   ],
   module: {

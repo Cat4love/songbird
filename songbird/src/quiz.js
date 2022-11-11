@@ -1,5 +1,5 @@
-import './index.html';
-import './index.scss';
+import './quiz.html';
+import './style.scss';
 import birdsData from './modules/birds';
 
 const questions = document.querySelectorAll('.questions__item');
@@ -77,7 +77,8 @@ quizSubmit.addEventListener('click', () => {
     family += 1;
     getBirds(family);
   } else if (quizSubmit.classList.contains('active') && family === 5) {
-    console.log('you win');
+    localStorage.setItem('score', `${score}`)
+    document.location.href = './greet.html'
   } else {
     return;
   }
@@ -190,3 +191,4 @@ volume.addEventListener('click', mute);
 volumeBar.addEventListener('input', () => {
   changeVolume();
 });
+

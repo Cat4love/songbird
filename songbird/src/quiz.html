@@ -22,31 +22,29 @@
 				<img src="./assets/images/hidden_bird.jpg" alt="" class="question__image">
 				<div class="question__info">
 					<p class="qusetion__answer">******</p>
-					<div class="question__audio">
-						<div class="question__player player">
+					<div class="question__player player">
+						<input
+							type="range"
+							id="progress-bar"
+							min="0"
+							max=""
+							value="0"
+						/>
+						<div class="trackTime">
+							<div class="currentTime"></div>
+							<span class="trackTimeSlider">/</span>
+							<div class="durationTime"></div>
+							<button class="volume player-icon"></button>
 							<input
-								type="range"
-								id="progress-bar"
-								min="0"
-								max=""
-								value="0"
-							/>
-							<div class="trackTime">
-								<div class="currentTime"></div>
-								<span class="trackTimeSlider">/</span>
-								<div class="durationTime"></div>
-								<button class="volume player-icon"></button>
-								<input
-								type="range"
-								id="volume-bar"
-								min="0"
-								max="100"
-								value="0"
-							/>
-							</div>
-							<audio></audio>
-							<button class="play player-icon"></button>
+							type="range"
+							id="volume-bar"
+							min="0"
+							max="100"
+							value="0"
+						/>
 						</div>
+						<audio></audio>
+						<button class="play player-icon"></button>
 					</div>
 				</div>
 			</div>
@@ -55,39 +53,40 @@
 					<div class="quiz__answers"></div>
 					<div class="quiz__info bird">
 						<div class="bird__wrap">
-							<img src="./assets/images/hidden_bird.jpg" alt="" class="bird__image hide">
-							<div class="bird__info hide">
+							<p class="bird__instruction view">Пожалуйста, прослушайте плеер и выберите вариант ответа.</p>
+							<img src="./assets/images/hidden_bird.jpg" alt="" class="bird__image">
+							<div class="bird__info">
 								<p class="bird__name"></p>
 								<p class="bird__species"></p>
+								<div class="bird__player player">
+									<input
+										type="range"
+										id="progress-barTwo"
+										min="0"
+										max=""
+										value="0"
+									/>
+									<div class="trackTime">
+										<div class="currentTimeTwo"></div>
+										<span class="trackTimeSlider">/</span>
+										<div class="durationTimeTwo"></div>
+										<button class="volumeTwo volume player-icon"></button>
+										<input
+										type="range"
+										id="volume-barTwo"
+										min="0"
+										max="100"
+										value="0"
+									/>
+									</div>
+									<audio class="audio"></audio>
+									<button class="playTwo play player-icon"></button>
+								</div>
 							</div>
+							<p class="bird__description"></p>
 						</div>
-						<div class="bird__player player hide">
-							<input
-								type="range"
-								id="progress-barTwo"
-								min="0"
-								max=""
-								value="0"
-							/>
-							<div class="trackTime">
-								<div class="currentTimeTwo"></div>
-								<span class="trackTimeSlider">/</span>
-								<div class="durationTimeTwo"></div>
-								<button class="volumeTwo volume player-icon"></button>
-								<input
-								type="range"
-								id="volume-barTwo"
-								min="0"
-								max="100"
-								value="0"
-							/>
-							</div>
-							<audio class="audio"></audio>
-							<button class="playTwo play player-icon"></button>
-						</div>
-						<p class="bird__description">Пожалуйста, прослушайте плеер и выберите вариант из списка</p>
 					</div>
-				<button class="quiz__submit inactive">следующий уровень</button>
+					<button class="quiz__submit inactive">Cледующий уровень</button>
 			</div>
 		</div>
 	</div>

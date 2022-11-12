@@ -25,9 +25,10 @@ const gameScore = document.querySelector('.game__score');
 const birds = document.querySelector('.quiz__answers');
 const birdInfo = document.querySelector('.bird__info');
 const birdPlayer = document.querySelector('.bird__player');
+const birdInstruction = document.querySelector('.bird__instruction');
 
 
-let randomBird = getRandom(0, 5);
+let randomBird = '';
 let score = 0;
 let gamePoints = 5;
 let family = 0;
@@ -35,11 +36,14 @@ volumeBar.value = 100;
 volumeBarTwo.value = 100;
 let isPlay = false;
 let isPlayTwo = false;
-
 let saveTrackTime = 0;
 let saveTrackTimeTwo = 0;
-
 let chooseBird = '';
+
+
+
+
+
 
 function getRandom(min, max) {
   min = Math.ceil(min);
@@ -56,7 +60,6 @@ function getBirds(family) {
     li.innerHTML = birdsData[family][i].name;
     birds.append(li);
   }
-
   for (let i = 0; i < questions.length; i++) {
     questions[i].classList.remove('active');
     questions[i].classList.add('inactive');
@@ -64,7 +67,6 @@ function getBirds(family) {
       questions[i].classList.add('active');
     }
   }
-
   quizSubmit.classList.remove('active');
   questionImage.src = './assets/images/hidden_bird.jpg';
   qusetionAnswer.innerHTML = '******';
@@ -74,6 +76,13 @@ function getBirds(family) {
   isPlay = false;
   gamePoints = 5;
   randomBird = getRandom(0, 5);
+  audio.src = birdsData[family][randomBird].audio;
+  console.log(birdsData[family][randomBird])
+  birdInstruction.classList.add('view');
+  birdInstruction.classList.remove('hide');
+  birdPlayer.classList.add('hide');
+  birdPlayer.classList.remove('view');
+  
 }
 
 function getBirdInfo(family, id) {
@@ -83,12 +92,10 @@ function getBirdInfo(family, id) {
   birdImage.src = birdsData[family][id].image;
   chooseBird = birdsData[family][id].audio;
   audioTwo.src = chooseBird;
-  birdImage.classList.remove('hide');
-  birdImage.classList.add('view');
-  birdInfo.classList.remove('hide');
-  birdInfo.classList.add('view');
-  birdPlayer.classList.remove('hide');
+  birdInstruction.classList.add('hide');
+  birdInstruction.classList.remove('view');
   birdPlayer.classList.add('view');
+  birdPlayer.classList.remove('hide');
 }
 
 getBirds(family);
@@ -97,12 +104,6 @@ quizSubmit.addEventListener('click', () => {
   if (quizSubmit.classList.contains('active') && family < 5) {
     family += 1;
     getBirds(family);
-    birdImage.classList.remove('view');
-    birdImage.classList.add('hide');
-    birdInfo.classList.remove('view');
-    birdInfo.classList.add('hide');
-    birdPlayer.classList.remove('view');
-    birdPlayer.classList.add('hide');
     birdDesc.innerHTML =
     'Пожалуйста, прослушайте плеер и выберите вариант из списка';
   } else if (quizSubmit.classList.contains('active') && family === 5) {
@@ -142,7 +143,6 @@ function getTrackTime() {
 
 function playAudio() {
   if (!isPlay) {
-    audio.src = birdsData[family][randomBird].audio;
     audio.currentTime = saveTrackTime;
     audio.play();
     play.classList.add('pause');

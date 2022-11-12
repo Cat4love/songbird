@@ -104,8 +104,8 @@ quizSubmit.addEventListener('click', () => {
   if (quizSubmit.classList.contains('active') && family < 5) {
     family += 1;
     getBirds(family);
-    birdDesc.innerHTML =
-    'Пожалуйста, прослушайте плеер и выберите вариант из списка';
+    audio.pause();
+    audioTwo.pause();
   } else if (quizSubmit.classList.contains('active') && family === 5) {
     localStorage.setItem('score', `${score}`);
     // document.location.href = './greet.html'
@@ -133,6 +133,10 @@ document.querySelector('.quiz__answers').addEventListener('click', (event) => {
       }
     }
     getBirdInfo(family, id);
+    audioTwo.pause();
+    saveTrackTimeTwo = 0;
+    playTwo.classList.remove('pause');
+    isPlayTwo = false;
   }
 });
 

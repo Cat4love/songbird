@@ -175,6 +175,7 @@ body {
   padding: 10px;
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .quiz__indicator {
@@ -186,7 +187,8 @@ body {
 }
 
 .quiz__answer:hover {
-  border: 1px solid white;
+  border: 1px solid rgba(255, 255, 255, 1);
+  cursor: pointer;
 }
 
 .quiz__submit {
@@ -196,11 +198,12 @@ body {
   border: 0px;
   color: white;
   background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 20px;
 }
 
 .quiz__submit:hover {
-  border: 2px solid white;
+  border: 1px solid rgba(255, 255, 255, 1);
   cursor: pointer;
 }
 

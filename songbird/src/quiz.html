@@ -1,106 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Quiz</title>
-</head>
-<body>
-	<div class="container">
-		<header class="header">
-			<h1 class="header__title">Songbird</h1>
-			<nav class="header__nav">
-				<a href="greet.html" class="header__link">Описание</a>
-				<a href="quiz.html" class="header__link">Игра</a>
-			</nav>
-		</header>
-		<main class="game">
-			<ul class="game__list questions-list">
-				<li class="questions__item">Разминка</li>
-				<li class="questions__item">Воробьиные</li>
-				<li class="questions__item">Лесные птицы</li>
-				<li class="questions__item">Певчие птицы</li>
-				<li class="questions__item">Хищные птицы</li>
-				<li class="questions__item">Морские птицы</li>
-			</ul>
-			<p class="game__score">Score: 0</p>
-			<div class="game__question question">
-				<img src="./assets/images/hidden_bird.jpg" alt="" class="question__image">
-				<div class="question__info">
-					<p class="qusetion__answer">******</p>
-					<div class="question__player player">
-						<input
-							type="range"
-							id="progress-bar"
-							min="0"
-							max=""
-							value="0"
-						/>
-						<div class="trackTime">
-							<div class="currentTime"></div>
-							<span class="trackTimeSlider">/</span>
-							<div class="durationTime"></div>
-							<button class="volume player-icon"></button>
-							<input
-							type="range"
-							id="volume-bar"
-							min="0"
-							max="100"
-							value="0"
-						/>
-						</div>
-						<audio></audio>
-						<button class="play player-icon"></button>
-					</div>
-				</div>
-			</div>
-			<div class="game__quiz quiz">
-				<div class="quiz__wrap">
-					<div class="quiz__answers"></div>
-					<div class="quiz__info bird">
-						<div class="bird__wrap">
-							<p class="bird__instruction view">Пожалуйста, прослушайте плеер и выберите вариант ответа.</p>
-							<img src="./assets/images/hidden_bird.jpg" alt="" class="bird__image">
-							<div class="bird__info">
-								<p class="bird__name"></p>
-								<p class="bird__species"></p>
-								<div class="bird__player player">
-									<input
-										type="range"
-										id="progress-barTwo"
-										min="0"
-										max=""
-										value="0"
-									/>
-									<div class="trackTime">
-										<div class="currentTimeTwo"></div>
-										<span class="trackTimeSlider">/</span>
-										<div class="durationTimeTwo"></div>
-										<button class="volumeTwo volume player-icon"></button>
-										<input
-										type="range"
-										id="volume-barTwo"
-										min="0"
-										max="100"
-										value="0"
-									/>
-									</div>
-									<audio class="audio"></audio>
-									<button class="playTwo play player-icon"></button>
-								</div>
-							</div>
-							<p class="bird__description"></p>
-						</div>
-					</div>
-					<button class="quiz__submit inactive">Cледующий уровень</button>
-			</div>
-		</div>
-		</main>
-		<footer class="footer">
-			<a href="https://github.com/andreiplavinski" class="footer__link"><img src="./assets/images/github.svg" alt="github" class="footer__img"></a>
-			<a href="https://time.is/ru/calendar" class="footer__link">2022</a>
-			<a href="https://rs.school/js/" class="footer__link"><img src="./assets/images/rs_school_js.svg" alt="" class="footer__img"></a>
-		</footer>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="wrapper">
+        <header class="header">
+          <h1 class="header__title">Songbird</h1>
+          <nav class="header__nav">
+            <a href="greet.html" class="header__link">Описание</a>
+            <a href="quiz.html" class="header__link">Игра</a>
+            <a href="quiz.html" class="header__link">Галерея</a>
+          </nav>
+        </header>
+        <main class="game">
+          <ul class="game__list questions-list">
+            <li class="questions__item">Разминка</li>
+            <li class="questions__item">Воробьиные</li>
+            <li class="questions__item">Лесные птицы</li>
+            <li class="questions__item">Певчие птицы</li>
+            <li class="questions__item">Хищные птицы</li>
+            <li class="questions__item">Морские птицы</li>
+          </ul>
+          <p class="game__score">Score: 0</p>
+          <div class="game__question question">
+            <img
+              src="./assets/images/bird.svg"
+              alt=""
+              class="question__image"
+            />
+            <div class="question__info">
+              <p class="qusetion__answer">******</p>
+              <div class="question__player player">
+                <button class="play player-icon"></button>
+                <div class="player-input">
+                  <div class="player__bar">
+                    <input
+                      type="range"
+                      id="progress-bar"
+                      min="0"
+                      max=""
+                      value="0"
+                    />
+                  </div>
+                  <div class="trackTime">
+                    <div class="currentTime"></div>
+                    <div class="player__mute">
+                      <input
+                        type="range"
+                        id="volume-bar"
+                        min="0"
+                        max="100"
+                        value="0"
+                      />
+                      <button class="volume player-icon"></button>
+                    </div>
+                    <div class="durationTime"></div>
+                  </div>
+                </div>
+                <audio></audio>
+              </div>
+            </div>
+          </div>
+          <div class="game__quiz quiz">
+            <div class="quiz__wrap">
+              <div class="quiz__answers"></div>
+              <div class="quiz__info bird">
+                <p class="bird__instruction view">
+                  Пожалуйста, прослушайте плеер и выберите вариант ответа.
+                </p>
+                <div class="bird__wrap hide">
+                  <img src="#" alt="bird" class="bird__image" />
+                  <p class="bird__name"></p>
+                  <p class="bird__species"></p>
+                  <div class="bird__player player">
+                    <button class="playTwo play player-icon"></button>
+                    <div class="player-input">
+                      <div class="player__bar">
+                        <input
+                          type="range"
+                          id="progress-barTwo"
+                          min="0"
+                          max=""
+                          value="0"
+                        />
+                      </div>
+                      <div class="trackTime">
+                        <div class="currentTimeTwo"></div>
+                        <div class="player__mute">
+                          <input
+                            type="range"
+                            id="volume-barTwo"
+                            min="0"
+                            max="100"
+                            value="0"
+                          />
+                          <button class="volumeTwo volume player-icon"></button>
+                        </div>
+                        <div class="durationTimeTwo"></div>
+                      </div>
+                    </div>
+                    <audio class="audio"></audio>
+                  </div>
+                  <p class="bird__description"></p>
+                </div>
+              </div>
+            </div>
+            <button class="quiz__submit inactive">Cледующий уровень</button>
+          </div>
+        </main>
+        <footer class="footer">
+          <a href="https://github.com/andreiplavinski" class="footer__link"
+            ><img
+              src="./assets/images/github.svg"
+              alt="github"
+              class="footer__img"
+          /></a>
+          <a href="https://time.is/ru/calendar" class="footer__link">2022</a>
+          <a href="https://rs.school/js/" class="footer__link"
+            ><img
+              src="./assets/images/rs_school_js.svg"
+              alt=""
+              class="footer__img"
+          /></a>
+        </footer>
+      </div>
+    </div>
+  </body>
 </html>

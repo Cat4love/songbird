@@ -1,13 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 * {
   box-sizing: border-box;
 }
 
-
 body {
-  font-size: 14px;
-  width: 100%;
+  font-size: 16px;
+  font-family: 'Balsamiq Sans', cursive;
+  color: white;
 }
-
 
 .container {
   width: 100%;
@@ -16,15 +17,34 @@ body {
   top: 0;
   left: 0;
   overflow: auto;
-  background-color: blanchedalmond;
+  background: url('./assets/images/sky.jpg') no-repeat;
+  background-size: cover;
 }
 
-.header{
+.wrapper {
   width: clamp(340px, 100%, 1024px);
+  padding: 5px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background: linear-gradient(
+    0deg,
+    rgba(23, 113, 180, 1) 0%,
+    rgba(37, 174, 204, 1) 100%
+  );
+  border-radius: 20px;
+}
+
+.header {
+  width: 100%;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
-  padding: 5px 10px 5px;
+  padding: 5px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid white;
+  border-radius: 20px;
 }
 
 .header__title {
@@ -38,124 +58,158 @@ body {
   gap: 10px;
 }
 
-.header__link{
+.header__link {
   text-decoration: none;
+  color: white;
 }
 
 .game {
+  width: 100%;
+  height: 100%;
   margin: 0 auto;
-  padding: 10px 10px 10px;
+  padding: 5px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  background-color: burlywood;
+  gap: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid white;
+  border-radius: 20px;
+  flex-grow: 2;
 }
 
 .questions-list {
-  width: clamp(340px, 100%, 1024px);
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
-  border: 1px solid green;
   padding: 0px;
   margin: 0 auto;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
 }
 
 .game__score {
-  width: clamp(340px, 100%, 1024px);
+  width: 100%;
   margin: 0 auto;
-  border: 1px solid red;
   text-align: center;
+  border-radius: 20px;
+  padding: 5px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
 }
 
 .questions__item {
-  border: 1px solid blueviolet;
   list-style-type: none;
-}
-.game__score {
-  border: 1px solid red;
+  padding: 5px;
 }
 
 .question {
-  width: clamp(340px, 100%, 1024px);
-  display: flex;
-  border: 1px solid green;
+  width: 100%;
   display: flex;
   justify-content: space-around;
   margin: 0 auto;
+  padding: 5px;
+  gap: 5px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
 }
 .question__image {
   width: 170px;
   height: 170px;
-  // margin: 0 auto;
-  border: 1px solid green;
+  border-radius: 20px;
 }
 .question__info {
   width: 50%;
   display: flex;
   flex-direction: column;
-
-  align-items: center;
+  justify-content: space-around;
   gap: 5px;
-  // margin: 0 auto;
 }
 .qusetion__answer {
-  border: 1px solid green;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .quiz {
-  width: clamp(340px, 100%, 1024px);
+  width: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 5px;
 }
 
 .quiz__wrap {
   width: 100%;
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  gap: 10px;
+  gap: 5px;
   margin: 0 auto;
 }
 
 .quiz__answers {
-  width: clamp(340px, 100%, 1024px);
+  width: 30%;
   margin: 0 auto;
-  padding: 0px;
+  padding: 5px;
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  border: 1px solid green;
+  justify-content: space-between;
+  gap: 2px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
 }
 
 .quiz__answer {
+  box-sizing: border-box;
   height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   width: 100%;
-  border: 1px solid blueviolet;
   cursor: pointer;
+  padding: 10px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.quiz__indicator {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.quiz__answer:hover {
+  border: 1px solid white;
 }
 
 .quiz__submit {
-  width: clamp(340px, 100%, 1024px);
+  width: 100%;
   height: 30px;
   margin: 0 auto;
+  border: 0px;
+  color: white;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+}
+
+.quiz__submit:hover {
+  border: 2px solid white;
+  cursor: pointer;
 }
 
 .bird {
-  width: 100%;
+  width: 70%;
   display: flex;
   flex-direction: column;
   gap: 10px;
   position: relative;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
 }
 
 .bird__instruction {
@@ -164,106 +218,116 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  background-color: aqua;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 0px;
   margin: 0px;
   text-align: center;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
 }
-
 
 .bird__wrap {
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
-  flex-wrap: wrap;
-  gap: 10px;
+  align-items: center;
+  padding: 5px;
+  gap: 5px;
 }
 
 .bird__image {
   width: 170px;
   height: 170px;
-  // margin: 0 auto;
-  border: 5px solid green;
-}
-
-.bird__info {
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  gap: 5px;
-  // margin: 0 auto;
+  border-radius: 20px;
 }
 
 .bird__name {
-  border: 1px solid green;
   padding: 0px;
   margin: 0px;
 }
 .bird__species {
-  border: 1px solid green;
   padding: 0px;
   margin: 0px;
 }
 .bird__description {
-  border: 1px solid green;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   padding: 0px;
   margin: 0px;
+  font-size: 14px;
 }
 
 .player {
   display: flex;
-  flex-direction: column;
   align-items: center;
   gap: 5px;
   width: 100%;
   margin: 5px 0px 5px;
 }
 
+.player-input {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 5px;
+}
+
+.player__bar {
+  height: 14px;
+}
+
+.player__mute {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  gap: 5px;
+}
+
 .player-icon {
   width: 32px;
   height: 32px;
-  background-size: 32px 32px;
+  background-size: 28px 28px;
   background-position: center center;
   background-repeat: no-repeat;
   background-color: transparent;
   border: 0;
   outline: 0;
   opacity: 0.8;
-  cursor: pointer;
   transition: 0.3s;
 }
 
 .player-icon:hover {
   opacity: 1;
+  cursor: pointer;
 }
 
-.player-icon:active {
-  border: 0;
-  outline: 0;
-  transform: scale(1.1);
-}
+// .player-icon:active {
+//   // border: 0;
+//   // outline: 0;
+//   // transform: scale(1.1);
+// }
 
 .play {
-  width: 40px;
-  height: 40px;
-  background-size: 40px 40px;
+  width: 32px;
+  height: 32px;
+  margin: 0px;
+  padding: 0px;
+  background-size: 28px 28px;
   background-image: url('./assets/images/play.svg');
-  margin: 0 auto;
 }
 
 .volume {
   background-image: url('./assets/images/volume.svg');
   background-size: cover;
-  width: 18px;
-  height: 18px;
+  width: 14px;
+  height: 14px;
 }
 
 .volumeOff {
@@ -275,7 +339,6 @@ body {
 }
 
 .trackTime {
-  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -332,45 +395,49 @@ body {
 }
 
 .inactive {
-  background-color: pink;
+  filter: blur(1.5px);
 }
 
 .active {
-  background-color: skyblue;
 }
 
 .view {
-  // display: flex;
-  z-index: 1;
-  opacity: 1;
+  display: flex;
+  // z-index: 1;
+  // opacity: 1;
   transition: all 1s ease-in-out;
 }
 
 .hide {
-  // display: none !important;
-  z-index: 0;
-  opacity: 0;
+  display: none;
+  // width: 0px;
+  // height: 0px;
+  // z-index: 0;
+  // opacity: 0;
   transition: all 1s ease-in-out;
 }
 
-
-.footer{
+.footer {
   width: clamp(340px, 100%, 1024px);
   margin: 0 auto;
+  padding: 5px;
   display: flex;
   justify-content: space-between;
-  padding: 5px 10px 5px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid white;
+  border-radius: 20px;
 }
 
-
-.footer__link{
+.footer__link {
   display: flex;
   align-items: center;
   text-decoration: none;
   border: 0;
+  text-decoration: none;
+  color: white;
 }
 
 .footer__img {
-  width: 48px;
-  height: 48px;
+  width: 38px;
+  height: 38px;
 }

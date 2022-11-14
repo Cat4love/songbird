@@ -15,7 +15,7 @@ module.exports = {
   devServer: {
     port: 3000,
     open: ['quiz.html'],
-    // hot: true,
+    hot: true,
     allowedHosts: ['all'],
   },
   entry: pages.reduce((config, page) => {

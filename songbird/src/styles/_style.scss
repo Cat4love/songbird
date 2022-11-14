@@ -65,6 +65,12 @@ body {
   color: white;
 }
 
+.header__link:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+  transition: 0.1s ease-in-out;
+}
+
 .game {
   width: 100%;
   height: 100%;
@@ -434,7 +440,47 @@ body {
   color: white;
 }
 
+.footer__link:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+  transition: 0.1s ease-in-out;
+}
+
 .footer__img {
   width: 38px;
   height: 38px;
+}
+
+.greetings {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid white;
+  border-radius: 20px;
+}
+
+.greetings__article {
+  padding: 10px;
+  margin: 0px;
+}
+
+.greetings__start {
+  padding: 10px;
+  margin: 10px;
+  border: 0px;
+  color: white;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+}
+
+
+.greetings__start:hover {
+  border: 1px solid rgba(255, 255, 255, 1);
+  cursor: pointer;
 }

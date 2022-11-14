@@ -51,8 +51,18 @@ body {
 
 .header__title {
   margin: 0px;
+  font-size: 25px;
 }
-
+.header__logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.header__image{
+  width: 40px;
+  height: 40px;
+}
 .header__nav {
   display: flex;
   flex-direction: row;

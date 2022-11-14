@@ -23,8 +23,6 @@ const volumeBar = document.querySelector('#volume-bar');
 const volumeBarTwo = document.querySelector('#volume-barTwo');
 const gameScore = document.querySelector('.game__score');
 const birds = document.querySelector('.quiz__answers');
-const birdInfo = document.querySelector('.bird__info');
-const birdPlayer = document.querySelector('.bird__player');
 const birdInstruction = document.querySelector('.bird__instruction');
 
 let randomBird = '';
@@ -37,7 +35,6 @@ let isPlay = false;
 let isPlayTwo = false;
 let saveTrackTime = 0;
 let saveTrackTimeTwo = 0;
-let chooseBird = '';
 
 function getRandom(min, max) {
   min = Math.ceil(min);
@@ -49,14 +46,37 @@ function getBirds(family) {
   birds.innerHTML = '';
   for (let i = 0; i < birdsData[family].length; i++) {
     const li = document.createElement('li');
-    const span = document.createElement('span');
     li.className = 'quiz__answer';
-    span.className = 'quiz__indicator';
     li.id = birdsData[family][i].id;
     li.innerHTML = birdsData[family][i].name;
+    const span = document.createElement('span');
+    span.className = 'quiz__indicator';
     li.append(span);
     birds.append(li);
   }
+  chooseActiveFamily();
+  gamePoints = 5;
+  randomBird = getRandom(0, 5);
+  questionImage.src = './assets/images/bird.svg';
+  qusetionAnswer.innerHTML = '******';
+  saveTrackTime = 0;
+  saveTrackTimeTwo = 0;
+  audio.pause();
+  audioTwo.pause();
+  play.classList.remove('pause');
+  playTwo.classList.remove('pause');
+  isPlay = false;
+  isPlayTwo = false;
+  audio.src = birdsData[family][randomBird].audio;
+  quizSubmit.classList.remove('active');
+  quizSubmit.classList.add('inactive');
+  birdInstruction.classList.remove('hide');
+  birdWrap.classList.add('hide');
+}
+
+getBirds(family);
+
+function chooseActiveFamily() {
   for (let i = 0; i < questions.length; i++) {
     questions[i].classList.remove('active');
     questions[i].classList.add('inactive');
@@ -65,18 +85,6 @@ function getBirds(family) {
       questions[i].classList.remove('inactive');
     }
   }
-  quizSubmit.classList.remove('active');
-  questionImage.src = './assets/images/bird.svg';
-  qusetionAnswer.innerHTML = '******';
-  saveTrackTime = 0;
-  audio.pause();
-  play.classList.remove('pause');
-  isPlay = false;
-  gamePoints = 5;
-  randomBird = getRandom(0, 5);
-  audio.src = birdsData[family][randomBird].audio;
-  quizSubmit.classList.remove('active');
-  quizSubmit.classList.add('inactive');
 }
 
 function getBirdInfo(family, id) {
@@ -84,41 +92,29 @@ function getBirdInfo(family, id) {
   birdName.innerHTML = birdsData[family][id].name;
   birdSecondName.innerHTML = birdsData[family][id].species;
   birdImage.src = birdsData[family][id].image;
-  chooseBird = birdsData[family][id].audio;
-  audioTwo.src = chooseBird;
+  audioTwo.pause();
+  saveTrackTimeTwo = 0;
+  playTwo.classList.remove('pause');
+  isPlayTwo = false;
+  audioTwo.src = birdsData[family][id].audio;
   birdInstruction.classList.add('hide');
   birdWrap.classList.remove('hide');
+  console.log('points', gamePoints);
+  console.log('score', score);
+  console.log(quizSubmit.classList.contains('active'));
 }
-
-getBirds(family);
-
-quizSubmit.addEventListener('click', () => {
-  if (quizSubmit.classList.contains('active') && family < 5) {
-    family += 1;
-    getBirds(family);
-    audio.pause();
-    audioTwo.pause();
-  } else if (quizSubmit.classList.contains('active') && family === 5) {
-    localStorage.setItem('score', `${score}`);
-    // document.location.href = './greet.html'
-  } else {
-    return;
-  }
-  birdInstruction.classList.remove('hide');
-  birdWrap.classList.add('hide');
-});
 
 document.querySelector('.quiz__answers').addEventListener('click', (event) => {
   if (event.target.classList.contains('quiz__answer')) {
     let id = Number(event.target.id);
-    if (Number(id) === randomBird) {
+    if (id === randomBird) {
       questionImage.src = birdsData[family][id].image;
       qusetionAnswer.innerHTML = birdsData[family][id].name;
       event.target.children[0].innerHTML = '&#10003';
       event.target.children[0].style.color = 'green';
       if (!quizSubmit.classList.contains('active')) {
         score += gamePoints;
-        gameScore.innerText = `Score:${score}`;
+        gameScore.innerText = `Score: ${score}`;
       }
       quizSubmit.classList.add('active');
       quizSubmit.classList.remove('inactive');
@@ -130,10 +126,18 @@ document.querySelector('.quiz__answers').addEventListener('click', (event) => {
       }
     }
     getBirdInfo(family, id);
-    audioTwo.pause();
-    saveTrackTimeTwo = 0;
-    playTwo.classList.remove('pause');
-    isPlayTwo = false;
+  }
+});
+
+quizSubmit.addEventListener('click', () => {
+  if (quizSubmit.classList.contains('active') && family < 5) {
+    family += 1;
+    getBirds(family);
+  } else if (quizSubmit.classList.contains('active') && family === 5) {
+    localStorage.setItem('score', `${score}`);
+    // document.location.href = './greet.html'
+  } else {
+    return;
   }
 });
 
@@ -156,8 +160,7 @@ function playAudio() {
 }
 
 function playAudioTwo() {
-  if (!isPlayTwo && chooseBird !== '') {
-    // audioTwo.src = chooseBird;
+  if (!isPlayTwo) {
     audioTwo.currentTime = saveTrackTimeTwo;
     audioTwo.play();
     playTwo.classList.add('pause');
@@ -230,6 +233,7 @@ function mute() {
     changeVolume();
   }
 }
+
 function muteTwo() {
   volumeTwo.classList.toggle('volumeOff');
   audioTwo.muted = !audioTwo.muted;

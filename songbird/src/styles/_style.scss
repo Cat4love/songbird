@@ -16,15 +16,17 @@ body {
   position: absolute;
   top: 0;
   left: 0;
+  display: flex;
   overflow: auto;
   background: url('./assets/images/sky.jpg') no-repeat;
   background-size: cover;
+  background-position: center;
 }
 
 .wrapper {
   width: clamp(340px, 100%, 1024px);
   padding: 5px;
-  margin: 0 auto;
+  margin: auto;
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -150,7 +152,7 @@ body {
 }
 
 .quiz__answers {
-  width: 30%;
+  width: 40%;
   margin: 0 auto;
   padding: 5px;
   display: flex;
@@ -403,18 +405,10 @@ body {
 
 .view {
   display: flex;
-  // z-index: 1;
-  // opacity: 1;
-  transition: all 1s ease-in-out;
 }
 
 .hide {
   display: none;
-  // width: 0px;
-  // height: 0px;
-  // z-index: 0;
-  // opacity: 0;
-  transition: all 1s ease-in-out;
 }
 
 .footer {

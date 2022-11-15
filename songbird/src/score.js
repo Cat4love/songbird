@@ -1,5 +1,6 @@
 import './score.html';
 import './style.scss';
+import fanfareAudio from './assets/audio/fanfare.mp3';
 
 const scoreText = document.querySelector('.score__text');
 const scoreSubmit = document.querySelector('.score__button');
@@ -19,3 +20,10 @@ if (scorePoint < 30) {
 scoreSubmit.addEventListener('click', () => {
   document.location.href = pathLink;
 });
+
+
+
+(function getSoundFanfare() {
+  const myAudio = new Audio(fanfareAudio);
+  myAudio.autoplay = true;
+})();

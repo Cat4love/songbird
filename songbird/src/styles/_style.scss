@@ -244,7 +244,11 @@ body {
   padding: 0px;
   margin: 0px;
   text-align: center;
-  background: rgba(255, 255, 255, 0.2);
+  background: linear-gradient(
+    0deg,
+    rgba(23, 113, 180, 1) 0%,
+    rgba(37, 174, 204, 1) 100%
+  );
   border-radius: 20px;
 }
 
@@ -424,11 +428,17 @@ body {
 }
 
 .view {
-  display: flex;
+  z-index: 1;
+  opacity: 1;
+  transition: all 1s ease-in-out;
+
 }
 
 .hide {
-  display: none;
+  z-index: 0;
+  opacity: 0;
+  transition: all 1s ease-in-out;
+
 }
 
 .footer {
@@ -508,6 +518,12 @@ body {
   background: rgba(255, 255, 255, 0.1);
   border: 2px solid white;
   border-radius: 20px;
+}
+
+.score__text{
+  padding: 10px;
+  margin: 0px;
+  text-align: center;
 }
 
 

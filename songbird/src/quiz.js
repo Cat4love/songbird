@@ -72,10 +72,13 @@ function getBirds(family) {
   quizSubmit.classList.add('inactive');
   birdInstruction.classList.remove('hide');
   birdWrap.classList.add('hide');
+  birdInstruction.classList.add('view');
+  birdWrap.classList.remove('view');
   quizSubmit.innerHTML = 'Следующий уровень';
 }
 
 getBirds(family);
+setTimeout(getStratBirdInfo(family, 0));
 
 function chooseActiveFamily() {
   for (let i = 0; i < questions.length; i++) {
@@ -100,6 +103,17 @@ function getBirdInfo(family, id) {
   audioTwo.src = birdsData[family][id].audio;
   birdInstruction.classList.add('hide');
   birdWrap.classList.remove('hide');
+  birdInstruction.classList.remove('view');
+  birdWrap.classList.add('view');
+  quizSubmit.innerHTML = 'Следующий уровень';
+}
+
+function getStratBirdInfo(family, id) {
+  birdDesc.innerHTML = birdsData[family][id].description;
+  birdName.innerHTML = birdsData[family][id].name;
+  birdSecondName.innerHTML = birdsData[family][id].species;
+  birdImage.src = birdsData[family][id].image;
+  audioTwo.src = birdsData[family][id].audio;
 }
 
 document.querySelector('.quiz__answers').addEventListener('click', (event) => {

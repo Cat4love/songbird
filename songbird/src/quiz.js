@@ -72,6 +72,7 @@ function getBirds(family) {
   quizSubmit.classList.add('inactive');
   birdInstruction.classList.remove('hide');
   birdWrap.classList.add('hide');
+  quizSubmit.innerHTML = 'Следующий уровень';
 }
 
 getBirds(family);
@@ -99,9 +100,6 @@ function getBirdInfo(family, id) {
   audioTwo.src = birdsData[family][id].audio;
   birdInstruction.classList.add('hide');
   birdWrap.classList.remove('hide');
-  console.log('points', gamePoints);
-  console.log('score', score);
-  console.log(quizSubmit.classList.contains('active'));
 }
 
 document.querySelector('.quiz__answers').addEventListener('click', (event) => {
@@ -115,6 +113,9 @@ document.querySelector('.quiz__answers').addEventListener('click', (event) => {
       if (!quizSubmit.classList.contains('active')) {
         score += gamePoints;
         gameScore.innerText = `Score: ${score}`;
+        if (family === 5) {
+          quizSubmit.innerHTML = 'Завершить игру';
+        }
       }
       quizSubmit.classList.add('active');
       quizSubmit.classList.remove('inactive');
@@ -135,7 +136,7 @@ quizSubmit.addEventListener('click', () => {
     getBirds(family);
   } else if (quizSubmit.classList.contains('active') && family === 5) {
     localStorage.setItem('score', `${score}`);
-    // document.location.href = './greet.html'
+    document.location.href = './score.html';
   } else {
     return;
   }

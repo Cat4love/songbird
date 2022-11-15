@@ -67,10 +67,11 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 10px;
+  gap: 5px;
 }
 
 .header__link {
+  padding: 5px;
   text-decoration: none;
   color: white;
 }
@@ -79,6 +80,16 @@ body {
   transform: scale(1.1);
   cursor: pointer;
   transition: 0.1s ease-in-out;
+}
+
+.disabled-link {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+}
+
+.disabled-link:hover{
+  transform: scale(1.0);
+  cursor: default;
 }
 
 .game {
@@ -118,7 +129,7 @@ body {
 
 .questions__item {
   list-style-type: none;
-  padding: 5px;
+  padding: 10px;
 }
 
 .question {
@@ -217,7 +228,7 @@ body {
   border-radius: 20px;
 }
 
-.quiz__submit:hover {
+.quiz__submit:hover{
   border: 1px solid rgba(255, 255, 255, 1);
   cursor: pointer;
 }
@@ -332,11 +343,6 @@ body {
   cursor: pointer;
 }
 
-// .player-icon:active {
-//   // border: 0;
-//   // outline: 0;
-//   // transform: scale(1.1);
-// }
 
 .play {
   width: 32px;
@@ -423,22 +429,18 @@ body {
 }
 
 .active {
-  // background: rgba(255, 255, 255, 0.2);
-  // border-radius: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
 }
 
 .view {
   z-index: 1;
   opacity: 1;
-  transition: all 1s ease-in-out;
-
 }
 
 .hide {
   z-index: 0;
   opacity: 0;
-  transition: all 1s ease-in-out;
-
 }
 
 .footer {

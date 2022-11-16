@@ -1,10 +1,11 @@
 import './quiz.html';
 import './style.scss';
-import birdsData from './modules/birds';
+import birdsDataRu from './modules/birdsRu';
+import birdsDataEn from './modules/birdsEn';
 import winAudio from './assets/audio/win.mp3';
 import loseAudio from './assets/audio/lose.mp3';
 
-const questions = document.querySelectorAll('.questions__item');
+const questionsList = document.querySelector('.questions-list');
 const quizSubmit = document.querySelector('.quiz__submit');
 const birdWrap = document.querySelector('.bird__wrap');
 const birdName = document.querySelector('.bird__name');
@@ -26,8 +27,11 @@ const volumeBarTwo = document.querySelector('#volume-barTwo');
 const gameScore = document.querySelector('.game__score');
 const birds = document.querySelector('.quiz__answers');
 const birdInstruction = document.querySelector('.bird__instruction');
+const language = document.querySelector('.header__select');
 
-let randomBird = '';
+let languageFlag;
+let birdsData;
+let randomBird;
 let score = 0;
 let gamePoints = 5;
 let family = 0;
@@ -38,10 +42,72 @@ let isPlayTwo = false;
 let saveTrackTime = 0;
 let saveTrackTimeTwo = 0;
 
+language.addEventListener('change', () => {
+  languageFlag = language.value;
+  localStorage.setItem('language', `${language.value}`);
+  location.reload();
+});
+
+if (localStorage.getItem('language')) {
+  languageFlag = localStorage.getItem('language');
+  language.value = localStorage.getItem('language');
+} else {
+  languageFlag = 'RU';
+  language.value = 'RU';
+  let langOptions = document.querySelectorAll('.header__option');
+  for (let option of langOptions) {
+    console.log(option)
+    if(option.value === 'RU'){
+      option.selected = true;
+    }
+  }
+}
+
+if (languageFlag === 'RU') {
+  birdsData = birdsDataRu;
+  birdInstruction.innerHTML =
+    'Пожалуйста, прослушайте плеер и выберите вариант ответа.';
+  gameScore.innerHTML = 'Очки: 0'
+} else {
+  birdsData = birdsDataEn;
+  birdInstruction.innerHTML =
+    'Please listen to the player and choose an answer.';
+  gameScore.innerHTML = 'Score: 0'
+}
+
 function getRandom(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function getQuestions() {
+  let birdsEn = [
+    'Warm-up',
+    'Sparrows',
+    'Forest birds',
+    'Songbirds',
+    'Predator birds',
+    'Sea birds',
+  ];
+  let birdsRu = [
+    'Разминка',
+    'Воробьиные',
+    'Лесные птицы',
+    'Певчие птицы',
+    'Хищные птицы',
+    'Морские птицы',
+  ];
+  for (let i = 0; i < 6; i++) {
+    const li = document.createElement('li');
+    li.className = 'questions__item';
+    if (languageFlag === 'RU') {
+      li.innerHTML = birdsRu[i];
+    } else {
+      li.innerHTML = birdsEn[i];
+    }
+    questionsList.append(li);
+  }
 }
 
 function getBirds(family) {
@@ -77,16 +143,26 @@ function getBirds(family) {
   birdInstruction.classList.add('view');
   birdWrap.classList.remove('view');
   if (family === 5) {
-    quizSubmit.innerHTML = 'Завершить игру';
+    if (languageFlag === 'RU') {
+      quizSubmit.innerHTML = 'Завершить игру';
+    } else {
+      quizSubmit.innerHTML = 'Finish the game';
+    }
   } else {
-    quizSubmit.innerHTML = 'Следующий уровень';
+    if (languageFlag === 'RU') {
+      quizSubmit.innerHTML = 'Следующий вопрос';
+    } else {
+      quizSubmit.innerHTML = 'Next question';
+    }
   }
 }
 
+getQuestions();
 getBirds(family);
-setTimeout(getStratBirdInfo(family, 0));
+setTimeout(getStartBirdInfo(family, 0));
 
 function chooseActiveFamily() {
+  const questions = document.querySelectorAll('.questions__item');
   for (let i = 0; i < questions.length; i++) {
     questions[i].classList.remove('active');
     questions[i].classList.add('inactive');
@@ -113,7 +189,7 @@ function getBirdInfo(family, id) {
   birdWrap.classList.add('view');
 }
 
-function getStratBirdInfo(family, id) {
+function getStartBirdInfo(family, id) {
   birdDesc.innerHTML = birdsData[family][id].description;
   birdName.innerHTML = birdsData[family][id].name;
   birdSecondName.innerHTML = birdsData[family][id].species;
@@ -124,6 +200,7 @@ function getStratBirdInfo(family, id) {
 document.querySelector('.quiz__answers').addEventListener('click', (event) => {
   if (event.target.classList.contains('quiz__answer')) {
     let id = Number(event.target.id);
+    console.log(id, randomBird);
     if (id === randomBird) {
       questionImage.src = birdsData[family][id].image;
       qusetionAnswer.innerHTML = birdsData[family][id].name;
@@ -131,7 +208,11 @@ document.querySelector('.quiz__answers').addEventListener('click', (event) => {
         event.target.children[0].innerHTML = '&#10003';
         event.target.children[0].style.color = 'green';
         score += gamePoints;
-        gameScore.innerText = `Score: ${score}`;
+        if (languageFlag === 'RU') {
+          gameScore.innerText = `Очки: ${score}`;
+        } else {
+          gameScore.innerText = `Score: ${score}`;
+        }
         getSoundwin();
         getTrackTime();
         audio.pause();
@@ -141,7 +222,10 @@ document.querySelector('.quiz__answers').addEventListener('click', (event) => {
       quizSubmit.classList.add('active');
       quizSubmit.classList.remove('inactive');
     } else {
-      if (!quizSubmit.classList.contains('active') && event.target.children[0].style[0] !== 'color') {
+      if (
+        !quizSubmit.classList.contains('active') &&
+        event.target.children[0].style[0] !== 'color'
+      ) {
         gamePoints -= 1;
         event.target.children[0].innerHTML = '&#215';
         event.target.children[0].style.color = 'red';
@@ -151,7 +235,6 @@ document.querySelector('.quiz__answers').addEventListener('click', (event) => {
     getBirdInfo(family, id);
   }
 });
-
 
 quizSubmit.addEventListener('click', () => {
   if (quizSubmit.classList.contains('active') && family < 5) {

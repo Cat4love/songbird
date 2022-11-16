@@ -55,8 +55,8 @@ if (localStorage.getItem('language')) {
   languageFlag = 'RU';
   language.value = 'RU';
   let langOptions = document.querySelectorAll('.header__option');
+  localStorage.setItem('language', 'RU');
   for (let option of langOptions) {
-    console.log(option)
     if(option.value === 'RU'){
       option.selected = true;
     }

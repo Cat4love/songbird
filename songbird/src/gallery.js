@@ -12,22 +12,18 @@ const volumeBar = document.querySelector('#volume-bar');
 const gallery = document.querySelector('.gallery__birds');
 const language = document.querySelector('.header__select');
 
-let birdsData = birdsDataRu;
+let birdsData;
 volumeBar.value = 100;
 let isPlay = false;
 let saveTrackTime = 0;
 let birdSound;
 let languageFlag;
 
-
-
-
 language.addEventListener('change', () => {
   languageFlag = language.value;
   localStorage.setItem('language', `${language.value}`);
   location.reload();
 });
-
 
 if (localStorage.getItem('language')) {
   languageFlag = localStorage.getItem('language');
@@ -38,7 +34,7 @@ if (localStorage.getItem('language')) {
   let langOptions = document.querySelectorAll('.header__option');
   localStorage.setItem('language', 'RU');
   for (let option of langOptions) {
-    if(option.value === 'RU'){
+    if (option.value === 'RU') {
       option.selected = true;
     }
   }
@@ -74,7 +70,6 @@ function getBirds() {
       const button = document.createElement('button');
       button.id = `${i}${j}`;
       button.className = 'gallery__button';
-
       div.append(img);
       info.append(name);
       info.append(species);
@@ -97,9 +92,10 @@ for (let button of playButtons) {
     let family = id[0];
     let bird = id[1];
     birdSound = birdsData[family][bird].audio;
-		song.innerHTML = birdsData[family][bird].name;
+    song.innerHTML = birdsData[family][bird].name;
     audio.src = birdSound;
-		saveTrackTime = 0;
+    saveTrackTime = 0;
+    play.classList.remove('pause');
     isPlay = false;
     playAudio();
   });
@@ -146,7 +142,7 @@ setInterval(updateProgressValue, 1000);
 
 function changeProgressBar() {
   audio.currentTime = progressBar.value;
-  audioTwo.currentTime = progressBarTwo.value;
+  saveTrackTime = progressBar.value;
 }
 
 progressBar.addEventListener('input', () => {
@@ -184,6 +180,7 @@ play.addEventListener('click', playAudio);
 play.addEventListener('click', getTrackTime);
 
 audio.addEventListener('ended', () => {
+	isPlay = false;
   saveTrackTime = 0;
   playAudio();
 });

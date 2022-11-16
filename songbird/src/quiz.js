@@ -319,7 +319,9 @@ setInterval(updateProgressValue, 1000);
 
 function changeProgressBar() {
   audio.currentTime = progressBar.value;
+  saveTrackTime = progressBar.value;
   audioTwo.currentTime = progressBarTwo.value;
+  saveTrackTimeTwo = progressBarTwo.value;
 }
 
 progressBar.addEventListener('input', () => {
@@ -380,11 +382,13 @@ play.addEventListener('click', getTrackTime);
 playTwo.addEventListener('click', getTrackTime);
 
 audio.addEventListener('ended', () => {
+  isPlay = false;
   saveTrackTime = 0;
   playAudio();
 });
 
 audioTwo.addEventListener('ended', () => {
+  isPlayTwo = false;
   saveTrackTimeTwo = 0;
   playAudioTwo();
 });

@@ -48,7 +48,10 @@ body {
   border: 2px solid white;
   border-radius: 20px;
 }
-
+.header__items{
+  display: flex;
+  gap: 10px;
+}
 .header__title {
   margin: 0px;
   font-size: 25px;
@@ -60,18 +63,24 @@ body {
   justify-content: center;
 }
 .header__image{
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
+  padding: 1px;
 }
 .header__nav {
+  padding: 5px;
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 5px;
+  border: 2px solid white;
+  border-radius: 20px;
 }
 
 .header__link {
-  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-decoration: none;
   color: white;
 }
@@ -91,7 +100,7 @@ body {
 
 .disabled-link {
   background: rgba(255, 255, 255, 0.2);
-  border-radius: 20px;
+  border-radius: 32px;
 }
 
 .disabled-link:hover{

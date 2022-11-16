@@ -24,6 +24,7 @@ body {
 }
 
 .wrapper {
+  position: relative;
   width: clamp(340px, 100%, 1024px);
   padding: 5px;
   margin: auto;
@@ -43,6 +44,7 @@ body {
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   padding: 5px;
   background: rgba(255, 255, 255, 0.2);
   border: 2px solid white;
@@ -97,6 +99,11 @@ body {
   background: transparent;
   color: white;
 }
+
+.header__select:hover{
+  cursor: pointer;
+}
+
 
 .disabled-link {
   background: rgba(255, 255, 255, 0.2);
@@ -560,9 +567,123 @@ body {
   cursor: pointer;
 }
 
-
-
 .score__image {
   width: 128px;
   height: 128px;
+}
+
+
+.header__gallery{
+  width: 100%;
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  background: linear-gradient(
+    0deg,
+    rgba(23, 113, 180, 1) 0%,
+    rgba(37, 174, 204, 1) 100%
+  );
+  z-index: 1;
+}
+
+.gallery__birds{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+}
+
+.header__player {
+  border: 2px solid rgba(255, 255, 255, 1);
+  border-radius: 20px;
+  padding: 10px;
+  box-sizing: border-box;
+  margin: 5px 0px 0px 0px;
+}
+
+.gallery__bird {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 5px;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+}
+
+.gallery__box{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.gallery__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.gallery__image {
+  width: 170px;
+  height: 170px;
+  border-radius: 20px;
+}
+
+.gallery__name {
+  padding: 0px;
+  margin: 0px;
+}
+
+.gallery__species {
+  padding: 0px;
+  margin: 0px;
+}
+
+.gallery__desc {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0px;
+  margin: 0px;
+  font-size: 14px;
+}
+
+.gallery__button{
+  width: 32px;
+  height: 32px;
+  background-size: 28px 28px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+  opacity: 0.8;
+  transition: 0.3s;
+  margin: 0px;
+  padding: 0px;
+  transform: scale(1);
+  background-image: url('./assets/images/play.svg');
+}
+
+
+.gallery__button:hover{
+  transform: scale(1);
+  opacity: 1;
+  cursor: pointer;
+}
+
+
+.gallery__button:active{
+  transform: scale(1.1);
+  opacity: 1;
+  cursor: pointer;
+}
+
+.player__song {
+  padding: 0px;
+  margin: 0px;
 }

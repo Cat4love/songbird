@@ -7,7 +7,7 @@ const devMode = mode === 'development';
 const devtool = devMode ? 'source-map' : undefined;
 console.log(mode + ' mode');
 
-pages = ['quiz', 'greet', 'score'];
+pages = ['quiz', 'greet', 'score', 'gallery'];
 
 module.exports = {
   mode,

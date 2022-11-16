@@ -141,7 +141,7 @@ document.querySelector('.quiz__answers').addEventListener('click', (event) => {
       quizSubmit.classList.add('active');
       quizSubmit.classList.remove('inactive');
     } else {
-      if (!quizSubmit.classList.contains('active')) {
+      if (!quizSubmit.classList.contains('active') && event.target.children[0].style[0] !== 'color') {
         gamePoints -= 1;
         event.target.children[0].innerHTML = '&#215';
         event.target.children[0].style.color = 'red';

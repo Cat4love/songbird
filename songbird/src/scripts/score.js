@@ -4,9 +4,9 @@ import fanfareAudio from '../assets/audio/fanfare.mp3';
 
 const scoreText = document.querySelector('.score__text');
 const scoreSubmit = document.querySelector('.score__button');
-let scorePoint = localStorage.getItem('score');
+let scorePoint = localStorage.getItem('score112');
 let pathLink = '';
-let languageFlag = localStorage.getItem('language');
+let languageFlag = localStorage.getItem('language112');
 
 if (scorePoint < 30) {
   if (languageFlag === 'RU') {

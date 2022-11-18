@@ -9,19 +9,19 @@ let languageFlag;
 
 language.addEventListener('change', () => {
   languageFlag = language.value;
-  localStorage.setItem('language', `${language.value}`);
+  localStorage.setItem('language112', `${language.value}`);
   location.reload();
 });
 
-if (localStorage.getItem('language')) {
-  languageFlag = localStorage.getItem('language');
-  language.value = localStorage.getItem('language');
+if (localStorage.getItem('language112')) {
+  languageFlag = localStorage.getItem('language112');
+  language.value = localStorage.getItem('language112');
   changeText();
 } else {
   languageFlag = 'RU';
   language.value = 'RU';
   let langOptions = document.querySelectorAll('.header__option');
-  localStorage.setItem('language', 'RU');
+  localStorage.setItem('language112', 'RU');
   for (let option of langOptions) {
     if (option.value === 'RU') {
       option.selected = true;

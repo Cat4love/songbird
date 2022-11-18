@@ -14,7 +14,7 @@ module.exports = {
   devtool,
   devServer: {
     port: 3000,
-    open: ['quiz.html'],
+    open: ['greet.html'],
     hot: true,
     allowedHosts: ['all'],
   },

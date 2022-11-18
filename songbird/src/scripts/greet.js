@@ -27,6 +27,7 @@ if (localStorage.getItem('language112')) {
       option.selected = true;
     }
   }
+  changeText();
 }
 
 function changeText() {

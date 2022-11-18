@@ -1,94 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="icon" href="./assets/images/favicon.png" type="image/png ">
-	<title>Gallery</title>
-</head>
-<body>
-	<div class="container">
-		<div class="wrapper">
-				<header class="header header__gallery">
-					<div class="header__logo">
-						<h1 class="header__title">Songbird</h1>
-						<img src="./assets/images/logo.svg" alt="" class="header__image">
-					</div>
-					<div class="header__items">
-						<nav class="header__nav">
-							<a href="greet.html" class="header__link"
-								><img
-									src="./assets/images/faq.svg"
-									alt=""
-									class="header__image"
-							/></a>
-							<a href="quiz.html" class="header__link"
-								><img
-									src="./assets/images/game.svg"
-									alt=""
-									class="header__image"
-							/></a>
-							<a href="gallery.html" class="header__link disabled-link"
-								><img
-									src="./assets/images/gallery.svg"
-									alt=""
-									class="header__image"
-							/></a>
-						</nav>
-					</div>
-					<div class="header__player player">
-						<button class="play player-icon"></button>
-						<div class="player-input">
-							<p class="player__song"></p>
-							<div class="player__bar">
-								<input
-									type="range"
-									id="progress-bar"
-									min="0"
-									max=""
-									value="0"
-								/>
-							</div>
-							<div class="trackTime">
-								<div class="currentTime"></div>
-								<div class="player__mute">
-									<input
-										type="range"
-										id="volume-bar"
-										min="0"
-										max="100"
-										value="0"
-									/>
-									<button class="volume player-icon"></button>
-								</div>
-								<div class="durationTime"></div>
-							</div>
-						</div>
-						<audio></audio>
-					</div>
-				</header>
-		
-			<main class="gallery">
-				<div class="gallery__birds">
-				</div>
-			</main>
-			<footer class="footer">
-				<a href="https://github.com/andreiplavinski" class="footer__link"
-					><img
-						src="./assets/images/github.svg"
-						alt="github"
-						class="footer__img"
-				/></a>
-				<a href="https://time.is/ru/calendar" class="footer__link">2022</a>
-				<a href="https://rs.school/js/" class="footer__link"
-					><img
-						src="./assets/images/rs_school_js.svg"
-						alt=""
-						class="footer__img"
-				/></a>
-			</footer>
-		</div>
-	</div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./assets/images/favicon.png" type="image/png " />
+    <title>Gallery</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="wrapper">
+        <header class="header header__gallery">
+          <div class="header__logo">
+            <h1 class="header__title">Songbird</h1>
+            <img
+              src="./assets/images/logo.svg"
+              alt="songbird logo"
+              class="header__image"
+            />
+          </div>
+          <div class="header__items">
+            <nav class="header__nav">
+              <a href="greet.html" class="header__link"
+                ><img
+                  src="./assets/images/faq.svg"
+                  alt="faq icon"
+                  class="header__image"
+              /></a>
+              <a href="quiz.html" class="header__link"
+                ><img
+                  src="./assets/images/game.svg"
+                  alt="game icon"
+                  class="header__image"
+              /></a>
+              <a href="gallery.html" class="header__link disabled-link"
+                ><img
+                  src="./assets/images/gallery.svg"
+                  alt="gallery icon"
+                  class="header__image"
+              /></a>
+            </nav>
+          </div>
+          <div class="header__player player">
+            <button class="play player-icon"></button>
+            <div class="player-input">
+              <p class="player__song"></p>
+              <div class="player__bar">
+                <input
+                  type="range"
+                  id="progress-bar"
+                  min="0"
+                  max=""
+                  value="0"
+                />
+              </div>
+              <div class="trackTime">
+                <div class="currentTime"></div>
+                <div class="player__mute">
+                  <input
+                    type="range"
+                    id="volume-bar"
+                    min="0"
+                    max="100"
+                    value="0"
+                  />
+                  <button class="volume player-icon"></button>
+                </div>
+                <div class="durationTime"></div>
+              </div>
+            </div>
+            <audio></audio>
+          </div>
+        </header>
+        <main class="gallery">
+          <div class="gallery__birds"></div>
+        </main>
+        <footer class="footer">
+          <a href="https://github.com/andreiplavinski" class="footer__link"
+            ><img
+              src="./assets/images/github.svg"
+              alt="github icon"
+              class="footer__img"
+          /></a>
+          <a href="https://time.is/ru/calendar" class="footer__link">2022</a>
+          <a href="https://rs.school/js/" class="footer__link"
+            ><img
+              src="./assets/images/rs_school_js.svg"
+              alt="school icon"
+              class="footer__img"
+          /></a>
+        </footer>
+      </div>
+    </div>
+  </body>
 </html>

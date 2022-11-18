@@ -19,6 +19,25 @@ let saveTrackTime = 0;
 let birdSound;
 let languageFlag;
 
+progressBar.addEventListener('input', () => {
+  changeProgressBar();
+});
+
+play.addEventListener('click', playAudio);
+
+play.addEventListener('click', getTrackTime);
+
+audio.addEventListener('ended', () => {
+  isPlay = false;
+  saveTrackTime = 0;
+  playAudio();
+});
+
+volume.addEventListener('click', mute);
+volumeBar.addEventListener('input', () => {
+  changeVolume();
+});
+
 language.addEventListener('change', () => {
   languageFlag = language.value;
   localStorage.setItem('language', `${language.value}`);
@@ -145,10 +164,6 @@ function changeProgressBar() {
   saveTrackTime = progressBar.value;
 }
 
-progressBar.addEventListener('input', () => {
-  changeProgressBar();
-});
-
 function mute() {
   volume.classList.toggle('volumeOff');
   audio.muted = !audio.muted;
@@ -174,19 +189,3 @@ function changeVolume() {
 function getTrackTime() {
   saveTrackTime = audio.currentTime;
 }
-
-play.addEventListener('click', playAudio);
-
-play.addEventListener('click', getTrackTime);
-
-audio.addEventListener('ended', () => {
-	isPlay = false;
-  saveTrackTime = 0;
-  playAudio();
-});
-
-volume.addEventListener('click', mute);
-volumeBar.addEventListener('input', () => {
-  changeVolume();
-});
-

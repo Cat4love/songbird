@@ -43,11 +43,52 @@ let isPlayTwo = false;
 let saveTrackTime = 0;
 let saveTrackTimeTwo = 0;
 
+document.querySelector('.quiz__answers').addEventListener('click', (event) => {
+  pushAnswer(event);
+});
+
+quizSubmit.addEventListener('click', pushFurther);
+
+progressBar.addEventListener('input', () => {
+  changeProgressBar();
+});
+progressBarTwo.addEventListener('input', () => {
+  changeProgressBar();
+});
+
+play.addEventListener('click', playAudio);
+playTwo.addEventListener('click', playAudioTwo);
+
+play.addEventListener('click', getTrackTime);
+playTwo.addEventListener('click', getTrackTime);
+
+audio.addEventListener('ended', () => {
+  isPlay = false;
+  saveTrackTime = 0;
+  playAudio();
+});
+
+audioTwo.addEventListener('ended', () => {
+  isPlayTwo = false;
+  saveTrackTimeTwo = 0;
+  playAudioTwo();
+});
+
+volume.addEventListener('click', mute);
+volumeBar.addEventListener('input', () => {
+  changeVolume();
+});
+volumeTwo.addEventListener('click', muteTwo);
+volumeBarTwo.addEventListener('input', () => {
+  changeVolumeTwo();
+});
+
 language.addEventListener('change', () => {
   languageFlag = language.value;
   localStorage.setItem('language', `${language.value}`);
   location.reload();
 });
+
 
 if (localStorage.getItem('language')) {
   languageFlag = localStorage.getItem('language');
@@ -58,7 +99,7 @@ if (localStorage.getItem('language')) {
   let langOptions = document.querySelectorAll('.header__option');
   localStorage.setItem('language', 'RU');
   for (let option of langOptions) {
-    if(option.value === 'RU'){
+    if (option.value === 'RU') {
       option.selected = true;
     }
   }
@@ -68,12 +109,12 @@ if (languageFlag === 'RU') {
   birdsData = birdsDataRu;
   birdInstruction.innerHTML =
     'Пожалуйста, прослушайте плеер и выберите вариант ответа.';
-  gameScore.innerHTML = 'Очки: 0'
+  gameScore.innerHTML = 'Очки: 0';
 } else {
   birdsData = birdsDataEn;
   birdInstruction.innerHTML =
     'Please listen to the player and choose an answer.';
-  gameScore.innerHTML = 'Score: 0'
+  gameScore.innerHTML = 'Score: 0';
 }
 
 function getRandom(min, max) {
@@ -124,6 +165,11 @@ function getBirds(family) {
     birds.append(li);
   }
   chooseActiveFamily();
+  updateLevel();
+  getStartBirdInfo(family, randomBird);
+}
+
+function updateLevel() {
   gamePoints = 5;
   randomBird = getRandom(0, 5);
   questionImage.src = birdStandard;
@@ -160,7 +206,6 @@ function getBirds(family) {
 
 getQuestions();
 getBirds(family);
-setTimeout(getStartBirdInfo(family, 0));
 
 function chooseActiveFamily() {
   const questions = document.querySelectorAll('.questions__item');
@@ -198,7 +243,7 @@ function getStartBirdInfo(family, id) {
   audioTwo.src = birdsData[family][id].audio;
 }
 
-document.querySelector('.quiz__answers').addEventListener('click', (event) => {
+function pushAnswer(event) {
   if (event.target.classList.contains('quiz__answer')) {
     let id = Number(event.target.id);
     if (id === randomBird) {
@@ -234,9 +279,9 @@ document.querySelector('.quiz__answers').addEventListener('click', (event) => {
     }
     getBirdInfo(family, id);
   }
-});
+}
 
-quizSubmit.addEventListener('click', () => {
+function pushFurther() {
   if (quizSubmit.classList.contains('active') && family < 5) {
     family += 1;
     getBirds(family);
@@ -246,7 +291,7 @@ quizSubmit.addEventListener('click', () => {
   } else {
     return;
   }
-});
+}
 
 function getTrackTime() {
   saveTrackTime = audio.currentTime;
@@ -324,13 +369,6 @@ function changeProgressBar() {
   saveTrackTimeTwo = progressBarTwo.value;
 }
 
-progressBar.addEventListener('input', () => {
-  changeProgressBar();
-});
-progressBarTwo.addEventListener('input', () => {
-  changeProgressBar();
-});
-
 function mute() {
   volume.classList.toggle('volumeOff');
   audio.muted = !audio.muted;
@@ -374,33 +412,6 @@ function changeVolumeTwo() {
     volumeTwo.classList.remove('volumeOff');
   }
 }
-
-play.addEventListener('click', playAudio);
-playTwo.addEventListener('click', playAudioTwo);
-
-play.addEventListener('click', getTrackTime);
-playTwo.addEventListener('click', getTrackTime);
-
-audio.addEventListener('ended', () => {
-  isPlay = false;
-  saveTrackTime = 0;
-  playAudio();
-});
-
-audioTwo.addEventListener('ended', () => {
-  isPlayTwo = false;
-  saveTrackTimeTwo = 0;
-  playAudioTwo();
-});
-
-volume.addEventListener('click', mute);
-volumeBar.addEventListener('input', () => {
-  changeVolume();
-});
-volumeTwo.addEventListener('click', muteTwo);
-volumeBarTwo.addEventListener('input', () => {
-  changeVolumeTwo();
-});
 
 function getSoundwin() {
   const myAudio = new Audio(winAudio);

@@ -21,7 +21,7 @@ if (localStorage.getItem('language')) {
   languageFlag = 'RU';
   language.value = 'RU';
   let langOptions = document.querySelectorAll('.header__option');
-	localStorage.setItem('language', 'RU');
+  localStorage.setItem('language', 'RU');
   for (let option of langOptions) {
     if (option.value === 'RU') {
       option.selected = true;
@@ -31,7 +31,7 @@ if (localStorage.getItem('language')) {
 
 function changeText() {
   if (languageFlag === 'RU') {
-		greetButton.innerHTML = 'Начать'
+    greetButton.innerHTML = 'Начать';
     article.innerHTML = `${'Приветствуем в викторине Songbird!'} 
 		<br><br>  ${'Вам предстоит проверить свои знания в области орнитологии и угадать какой из птиц, собранных в коллекцию для вас, принадлежит звонкий голос в таинственном проигрывателе.'} 
 		<br><br> ${'Правила игры просты:'}  
@@ -45,7 +45,7 @@ function changeText() {
 		<br><br> ${'- Так же есть возможность ознакомиться с информацией обо всех пернатых, учавствующих в викторине - на странице "Галерея".'} 
 		<br><br> ${'- Желаем вам удачи, для начала викторины перейдите на страницу "Игра" или нажмите кнопку "Начать".'}`;
   } else {
-		greetButton.innerHTML = 'Start'
+    greetButton.innerHTML = 'Start';
     article.innerHTML = `${'Welcome to the Songbird quiz!'}
 		<br><br> ${'You have to test your knowledge of ornithology and guess which of the birds collected for you belongs to the ringing voice in the mysterious player.'}
 		<br><br> ${'The rules of the game are simple:'} 

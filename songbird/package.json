@@ -6,7 +6,8 @@
   "scripts": {
     "start": "export NODE_ENV=development&&webpack serve",
     "dev": "export NODE_ENV=development&&webpack",
-    "prod": "export NODE_ENV=production&&webpack"
+    "prod": "export NODE_ENV=production&&webpack",
+    "deploy": "npm run prod && npx gh-pages -d dist -e songbird"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +18,7 @@
     "babel-loader": "^9.1.0",
     "cross-env": "^7.0.3",
     "css-loader": "^6.7.1",
+    "gh-pages": "^4.0.0",
     "html-loader": "^4.2.0",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.6.1",

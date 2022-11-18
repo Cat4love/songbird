@@ -7,7 +7,7 @@
     "start": "export NODE_ENV=development&&webpack serve",
     "dev": "export NODE_ENV=development&&webpack",
     "prod": "export NODE_ENV=production&&webpack",
-    "deploy": "npm run prod && npx gh-pages -d dist -e songbird"
+    "deploy": "npm run dev && npx gh-pages -d dist -e songbird"
   },
   "keywords": [],
   "author": "",

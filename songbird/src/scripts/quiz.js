@@ -4,6 +4,7 @@ import birdsDataRu from './birdsRu';
 import birdsDataEn from './birdsEn';
 import winAudio from '../assets/audio/win.mp3';
 import loseAudio from '../assets/audio/lose.mp3';
+import birdStandard from '../assets/images/bird.svg';
 
 const questionsList = document.querySelector('.questions-list');
 const quizSubmit = document.querySelector('.quiz__submit');
@@ -125,7 +126,7 @@ function getBirds(family) {
   chooseActiveFamily();
   gamePoints = 5;
   randomBird = getRandom(0, 5);
-  questionImage.src = '../assets/images/bird.svg';
+  questionImage.src = birdStandard;
   qusetionAnswer.innerHTML = '******';
   saveTrackTime = 0;
   saveTrackTimeTwo = 0;

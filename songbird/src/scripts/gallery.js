@@ -1,7 +1,7 @@
-import './gallery.html';
-import './style.scss';
-import birdsDataRu from './modules/birdsRu';
-import birdsDataEn from './modules/birdsEn';
+import '../gallery.html';
+import '../styles/style.scss';
+import birdsDataRu from './birdsRu';
+import birdsDataEn from './birdsEn';
 
 const play = document.querySelector('.play');
 const audio = document.querySelector('audio');

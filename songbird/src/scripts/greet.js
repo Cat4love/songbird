@@ -1,5 +1,5 @@
-import './greet.html';
-import './style.scss';
+import '../greet.html';
+import '../styles/style.scss';
 
 const language = document.querySelector('.header__select');
 const article = document.querySelector('.greetings__article');

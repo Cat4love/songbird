@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import './normalize.css';
 
 * {
   box-sizing: border-box;
@@ -18,7 +19,7 @@ body {
   left: 0;
   display: flex;
   overflow: auto;
-  background: url('./assets/images/sky.jpg') no-repeat;
+  background: url('../assets/images/sky.jpg') no-repeat;
   background-size: cover;
   background-position: center;
 }
@@ -373,22 +374,22 @@ body {
   margin: 0px;
   padding: 0px;
   background-size: 28px 28px;
-  background-image: url('./assets/images/play.svg');
+  background-image: url('../assets/images/play.svg');
 }
 
 .volume {
-  background-image: url('./assets/images/volume.svg');
+  background-image: url('../assets/images/volume.svg');
   background-size: cover;
   width: 14px;
   height: 14px;
 }
 
 .volumeOff {
-  background-image: url('./assets/images/volumeoff.svg');
+  background-image: url('../assets/images/volumeoff.svg');
 }
 
 .pause {
-  background-image: url('./assets/images/pause.svg');
+  background-image: url('../assets/images/pause.svg');
 }
 
 .trackTime {
@@ -666,7 +667,7 @@ body {
   margin: 0px;
   padding: 0px;
   transform: scale(1);
-  background-image: url('./assets/images/play.svg');
+  background-image: url('../assets/images/play.svg');
 }
 
 

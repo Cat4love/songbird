@@ -1,9 +1,9 @@
-import './quiz.html';
-import './style.scss';
-import birdsDataRu from './modules/birdsRu';
-import birdsDataEn from './modules/birdsEn';
-import winAudio from './assets/audio/win.mp3';
-import loseAudio from './assets/audio/lose.mp3';
+import '../quiz.html';
+import '../styles/style.scss';
+import birdsDataRu from './birdsRu';
+import birdsDataEn from './birdsEn';
+import winAudio from '../assets/audio/win.mp3';
+import loseAudio from '../assets/audio/lose.mp3';
 
 const questionsList = document.querySelector('.questions-list');
 const quizSubmit = document.querySelector('.quiz__submit');
@@ -125,7 +125,7 @@ function getBirds(family) {
   chooseActiveFamily();
   gamePoints = 5;
   randomBird = getRandom(0, 5);
-  questionImage.src = './assets/images/bird.svg';
+  questionImage.src = '../assets/images/bird.svg';
   qusetionAnswer.innerHTML = '******';
   saveTrackTime = 0;
   saveTrackTimeTwo = 0;
@@ -200,7 +200,6 @@ function getStartBirdInfo(family, id) {
 document.querySelector('.quiz__answers').addEventListener('click', (event) => {
   if (event.target.classList.contains('quiz__answer')) {
     let id = Number(event.target.id);
-    console.log(id, randomBird);
     if (id === randomBird) {
       questionImage.src = birdsData[family][id].image;
       qusetionAnswer.innerHTML = birdsData[family][id].name;

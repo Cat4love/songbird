@@ -19,17 +19,17 @@ module.exports = {
     allowedHosts: ['all'],
   },
   entry: pages.reduce((config, page) => {
-    config[page] = `./src/${page}.js`;
+    config[page] = `./src/scripts/${page}.js`;
     return config;
   }, {}),
   output: {
     path: path.resolve(__dirname, 'dist'),
     clean: true,
     filename: '[name].[contenthash].js',
-
     assetModuleFilename: 'assets/[hash][ext]',
   },
   optimization: {
+    minimize: false, 
     splitChunks: {
       chunks: 'all',
     },

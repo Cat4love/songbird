@@ -1,6 +1,6 @@
-import './score.html';
-import './style.scss';
-import fanfareAudio from './assets/audio/fanfare.mp3';
+import '../score.html';
+import '../styles/style.scss';
+import fanfareAudio from '../assets/audio/fanfare.mp3';
 
 const scoreText = document.querySelector('.score__text');
 const scoreSubmit = document.querySelector('.score__button');

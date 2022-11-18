@@ -1,8 +1,9 @@
 import '../greet.html';
 import '../styles/style.scss';
 
-const language = document.querySelector('.header__select');
+const language = document.querySelector('.greetings__select');
 const article = document.querySelector('.greetings__article');
+const title = document.querySelector('.greeting__title');
 const greetButton = document.querySelector('.greetings__start');
 
 let languageFlag;
@@ -10,7 +11,7 @@ let languageFlag;
 language.addEventListener('change', () => {
   languageFlag = language.value;
   localStorage.setItem('language112', `${language.value}`);
-  location.reload();
+  changeText();
 });
 
 if (localStorage.getItem('language112')) {
@@ -20,7 +21,7 @@ if (localStorage.getItem('language112')) {
 } else {
   languageFlag = 'RU';
   language.value = 'RU';
-  let langOptions = document.querySelectorAll('.header__option');
+  let langOptions = document.querySelectorAll('.greetings__option');
   localStorage.setItem('language112', 'RU');
   for (let option of langOptions) {
     if (option.value === 'RU') {
@@ -32,32 +33,29 @@ if (localStorage.getItem('language112')) {
 
 function changeText() {
   if (languageFlag === 'RU') {
+    title.innerHTML =
+      'Приветствуем в викторине Songbird! Выберите язык:';
     greetButton.innerHTML = 'Начать';
-    article.innerHTML = `${'Приветствуем в викторине Songbird!'} 
-		<br><br>  ${'Вам предстоит проверить свои знания в области орнитологии и угадать какой из птиц, собранных в коллекцию для вас, принадлежит звонкий голос в таинственном проигрывателе.'} 
-		<br><br> ${'Правила игры просты:'}  
-		<br><br> ${'- Всего будет 6 блоков-вопросов, в каждом из которых случайным образом замешано 6 птиц.'} 
+    article.innerHTML = `${'Проверьте свои познания в области орнитологии, соблюдая простые правила:'} 
+		<br><br> ${'- В игре будет предложено 6 раундов, в каждом из которых случайным образом замешано 6 птиц.'}  
 		<br><br> ${'- Вам предстоит прослушать запись на основном аудио-плеере и выбрать один из предложенных вариантов.'} 
-		<br><br>  ${'- После произведдного вами выбора, появится индикатор сообщающий о его правильности. А так же звуковая индикация.'} 
-		<br><br>  ${'- Так же есть возможность узнать вашего фаворита ближе, в информационном блоке викторины.'} 
-		<br><br> ${'- После правильного ответа на вопрос разблокируется кнопка для перехода к другому вопросу.'} 
-		<br><br>  ${'- Просматривать остальных птиц, после правильного выбора - возможно без штрафных баллов.'} 
-		<br><br> ${'- В конце игры вам будет предоставлена итоговая сумма баллов за игру.'} 
-		<br><br> ${'- Так же есть возможность ознакомиться с информацией обо всех пернатых, учавствующих в викторине - на странице "Галерея".'} 
-		<br><br> ${'- Желаем вам удачи, для начала викторины перейдите на страницу "Игра" или нажмите кнопку "Начать".'}`;
+		<br><br>  ${'- Насколько правильным был ваш выбор стоит судить по цветовому и звуковому индикатору.'} 
+		<br><br>  ${'- Информация о выбранной птице отобразится в соответствующем блоке.'} 
+    <br><br> ${'- Эти сведения так же можно подчеркнуть на странице "Галерея".'} 
+		<br><br> ${'- После правильного ответа на вопрос разблокируется кнопка для перехода к следующему раунду.'} 
+		<br><br> ${'- По окончанию финального раунда отобразится сумма баллов за текущую игру.'}
+		<br><br> ${'- Желаем вам удачи! Для старта нажмите кнопку "Начать".'}`;
   } else {
+    title.innerHTML = 'Welcome to Songbird Quiz! Select a language:';
     greetButton.innerHTML = 'Start';
-    article.innerHTML = `${'Welcome to the Songbird quiz!'}
-		<br><br> ${'You have to test your knowledge of ornithology and guess which of the birds collected for you belongs to the ringing voice in the mysterious player.'}
-		<br><br> ${'The rules of the game are simple:'}
-		<br><br> ${'- There will be 6 question blocks in total, with 6 birds randomly involved in each block.'}
-		<br><br> ${'- Listen to the recording on the main audio player and choose one of the options.'}
-		<br><br> ${'- After you have made your choice, an indicator will appear indicating that it is correct. As well as sound indication.'}
-		<br><br> ${'- You can get to know your favorite in the information block of the quiz.'}
-		<br><br> ${'- After answering a question correctly, the button to move to another question is unlocked.'}
-		<br><br> ${'- View other birds after correct selection - possibly without penalty points.'}
-		<br><br> ${'- At the end of the game you will be given a total score for the game.'}
-		<br><br> ${'- You have the opportunity to get acquainted with the information about all the birds participating in the quiz - on the "Gallery" page.'}
-		<br><br> ${'- We wish you good luck, to start the quiz go to the "Game" page or click the "Start" button.'}`;
+    article.innerHTML = `${'Test your knowledge of ornithology by following these simple rules:'}
+    <br><br> ${'- The game will offer 6 rounds, with 6 birds randomly mixed in each round.'}
+    <br><br> ${'- You have to listen to the recording on the main audio player and choose one of the options.'}
+    <br><br> ${'- How correct was your choice is to be judged by the color and sound indicator.'}
+    <br><br> ${'- Information about the selected bird will be displayed in the corresponding block.'}
+    <br><br> ${'- This information can also be underlined on the Gallery page.'}
+    <br><br> ${'- After answering the question correctly, the button to proceed to the next round is unlocked.'}
+    <br><br> ${'- At the end of the final round, the sum of points for the current game will be displayed.'}
+    <br><br> ${'- We wish you good luck! To start, press the "Start" button.'}`;
   }
 }

@@ -28,7 +28,6 @@ const volumeBarTwo = document.querySelector('#volume-barTwo');
 const gameScore = document.querySelector('.game__score');
 const birds = document.querySelector('.quiz__answers');
 const birdInstruction = document.querySelector('.bird__instruction');
-const language = document.querySelector('.header__select');
 
 let languageFlag;
 let birdsData;
@@ -83,26 +82,11 @@ volumeBarTwo.addEventListener('input', () => {
   changeVolumeTwo();
 });
 
-language.addEventListener('change', () => {
-  languageFlag = language.value;
-  localStorage.setItem('language112', `${language.value}`);
-  location.reload();
-});
-
-
 if (localStorage.getItem('language112')) {
   languageFlag = localStorage.getItem('language112');
-  language.value = localStorage.getItem('language112');
 } else {
   languageFlag = 'RU';
-  language.value = 'RU';
-  let langOptions = document.querySelectorAll('.header__option');
   localStorage.setItem('language112', 'RU');
-  for (let option of langOptions) {
-    if (option.value === 'RU') {
-      option.selected = true;
-    }
-  }
 }
 
 if (languageFlag === 'RU') {

@@ -10,7 +10,7 @@ const progressBar = document.querySelector('#progress-bar');
 const volume = document.querySelector('.volume');
 const volumeBar = document.querySelector('#volume-bar');
 const gallery = document.querySelector('.gallery__birds');
-const language = document.querySelector('.header__select');
+
 
 let birdsData;
 volumeBar.value = 100;
@@ -38,25 +38,13 @@ volumeBar.addEventListener('input', () => {
   changeVolume();
 });
 
-language.addEventListener('change', () => {
-  languageFlag = language.value;
-  localStorage.setItem('language112', `${language.value}`);
-  location.reload();
-});
+
 
 if (localStorage.getItem('language112')) {
   languageFlag = localStorage.getItem('language112');
-  language.value = localStorage.getItem('language112');
 } else {
   languageFlag = 'RU';
-  language.value = 'RU';
-  let langOptions = document.querySelectorAll('.header__option');
   localStorage.setItem('language112', 'RU');
-  for (let option of langOptions) {
-    if (option.value === 'RU') {
-      option.selected = true;
-    }
-  }
 }
 
 if (languageFlag === 'RU') {

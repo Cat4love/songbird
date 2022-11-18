@@ -48,15 +48,15 @@ function changeText() {
     greetButton.innerHTML = 'Start';
     article.innerHTML = `${'Welcome to the Songbird quiz!'}
 		<br><br> ${'You have to test your knowledge of ornithology and guess which of the birds collected for you belongs to the ringing voice in the mysterious player.'}
-		<br><br> ${'The rules of the game are simple:'} 
+		<br><br> ${'The rules of the game are simple:'}
 		<br><br> ${'- There will be 6 question blocks in total, with 6 birds randomly involved in each block.'}
-		<br><br> ${'- You have to listen to the recording on the main audio player and choose one of the options.'}
-		<br><br> ${'- After you have made your selection, an indicator will appear indicating that it is correct. As well as sound indication.'}
-		<br><br> ${'- There is also an opportunity to get to know your favorite closer, in the information block of the quiz.'}
+		<br><br> ${'- Listen to the recording on the main audio player and choose one of the options.'}
+		<br><br> ${'- After you have made your choice, an indicator will appear indicating that it is correct. As well as sound indication.'}
+		<br><br> ${'- You can get to know your favorite in the information block of the quiz.'}
 		<br><br> ${'- After answering a question correctly, the button to move to another question is unlocked.'}
 		<br><br> ${'- View other birds after correct selection - possibly without penalty points.'}
 		<br><br> ${'- At the end of the game you will be given a total score for the game.'}
-		<br><br> ${'- It is also possible to get acquainted with information about all the birds participating in the quiz - on the "Gallery" page.'}
+		<br><br> ${'- You have the opportunity to get acquainted with the information about all the birds participating in the quiz - on the "Gallery" page.'}
 		<br><br> ${'- We wish you good luck, to start the quiz go to the "Game" page or click the "Start" button.'}`;
   }
 }

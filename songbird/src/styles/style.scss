@@ -220,6 +220,7 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
+  gap: 5px;
   width: 100%;
   cursor: pointer;
   padding: 10px;
@@ -229,8 +230,6 @@ body {
 }
 
 .quiz__indicator {
-  width: 16px;
-  height: 16px;
   display: flex;
   justify-content: center;
   align-items: center;
